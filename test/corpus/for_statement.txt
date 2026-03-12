@@ -1,0 +1,307 @@
+================================================================================
+Simple for loop
+================================================================================
+{% for x in items %}{{ x }}{% endfor %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (for_statement
+    (for_open
+      (statement_begin)
+      (for_keyword)
+      target: (identifier)
+      (in_keyword)
+      iterable: (identifier)
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (for_close
+      (statement_begin)
+      (endfor_keyword)
+      (statement_end))))
+
+================================================================================
+For with else
+================================================================================
+{% for x in items %}{{ x }}{% else %}empty{% endfor %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (for_statement
+    (for_open
+      (statement_begin)
+      (for_keyword)
+      target: (identifier)
+      (in_keyword)
+      iterable: (identifier)
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (else_clause
+      (statement_begin)
+      (else_keyword)
+      (statement_end))
+    (text)
+    (for_close
+      (statement_begin)
+      (endfor_keyword)
+      (statement_end))))
+
+================================================================================
+For with tuple unpacking
+================================================================================
+{% for k, v in items %}{{ k }}{% endfor %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (for_statement
+    (for_open
+      (statement_begin)
+      (for_keyword)
+      target: (unpacking
+        (identifier)
+        (identifier))
+      (in_keyword)
+      iterable: (identifier)
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (for_close
+      (statement_begin)
+      (endfor_keyword)
+      (statement_end))))
+
+================================================================================
+For with parenthesized tuple unpacking
+================================================================================
+{% for (a, b) in items %}{{ a }}{% endfor %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (for_statement
+    (for_open
+      (statement_begin)
+      (for_keyword)
+      target: (unpacking
+        (identifier)
+        (identifier))
+      (in_keyword)
+      iterable: (identifier)
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (for_close
+      (statement_begin)
+      (endfor_keyword)
+      (statement_end))))
+
+================================================================================
+For with triple unpacking
+================================================================================
+{% for a, b, c in items %}{{ a }}{% endfor %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (for_statement
+    (for_open
+      (statement_begin)
+      (for_keyword)
+      target: (unpacking
+        (identifier)
+        (identifier)
+        (identifier))
+      (in_keyword)
+      iterable: (identifier)
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (for_close
+      (statement_begin)
+      (endfor_keyword)
+      (statement_end))))
+
+================================================================================
+For with triple unpacking and condition
+================================================================================
+{% for a, b, c in items if a > 0 %}{{ a }}{% endfor %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (for_statement
+    (for_open
+      (statement_begin)
+      (for_keyword)
+      target: (unpacking
+        (identifier)
+        (identifier)
+        (identifier))
+      (in_keyword)
+      iterable: (identifier)
+      (for_condition
+        (if_keyword)
+        filter: (binary_expression
+          left: (identifier)
+          right: (number)))
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (for_close
+      (statement_begin)
+      (endfor_keyword)
+      (statement_end))))
+
+================================================================================
+For with filter condition
+================================================================================
+{% for x in items if x > 0 %}{{ x }}{% endfor %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (for_statement
+    (for_open
+      (statement_begin)
+      (for_keyword)
+      target: (identifier)
+      (in_keyword)
+      iterable: (identifier)
+      (for_condition
+        (if_keyword)
+        filter: (binary_expression
+          left: (identifier)
+          right: (number)))
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (for_close
+      (statement_begin)
+      (endfor_keyword)
+      (statement_end))))
+
+================================================================================
+For with recursive
+================================================================================
+{% for x in items recursive %}{{ x }}{% endfor %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (for_statement
+    (for_open
+      (statement_begin)
+      (for_keyword)
+      target: (identifier)
+      (in_keyword)
+      iterable: (identifier)
+      (recursive_keyword)
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (for_close
+      (statement_begin)
+      (endfor_keyword)
+      (statement_end))))
+
+================================================================================
+Nested for loops
+================================================================================
+{% for x in a %}{% for y in b %}{{ x }}{% endfor %}{% endfor %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (for_statement
+    (for_open
+      (statement_begin)
+      (for_keyword)
+      target: (identifier)
+      (in_keyword)
+      iterable: (identifier)
+      (statement_end))
+    (for_statement
+      (for_open
+        (statement_begin)
+        (for_keyword)
+        target: (identifier)
+        (in_keyword)
+        iterable: (identifier)
+        (statement_end))
+      (print
+        (print_begin)
+        (identifier)
+        (print_end))
+      (for_close
+        (statement_begin)
+        (endfor_keyword)
+        (statement_end)))
+    (for_close
+      (statement_begin)
+      (endfor_keyword)
+      (statement_end))))
+
+================================================================================
+For inside if
+================================================================================
+{% if x %}{% for y in items %}{{ y }}{% endfor %}{% endif %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (if_statement
+    (if_open
+      (statement_begin)
+      (if_keyword)
+      condition: (identifier)
+      (statement_end))
+    (for_statement
+      (for_open
+        (statement_begin)
+        (for_keyword)
+        target: (identifier)
+        (in_keyword)
+        iterable: (identifier)
+        (statement_end))
+      (print
+        (print_begin)
+        (identifier)
+        (print_end))
+      (for_close
+        (statement_begin)
+        (endfor_keyword)
+        (statement_end)))
+    (if_close
+      (statement_begin)
+      (endif_keyword)
+      (statement_end))))
+
+================================================================================
+Empty for body
+================================================================================
+{% for x in items %}{% endfor %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (for_statement
+    (for_open
+      (statement_begin)
+      (for_keyword)
+      target: (identifier)
+      (in_keyword)
+      iterable: (identifier)
+      (statement_end))
+    (for_close
+      (statement_begin)
+      (endfor_keyword)
+      (statement_end))))

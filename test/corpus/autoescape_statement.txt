@@ -1,0 +1,61 @@
+================================================================================
+Autoescape true
+================================================================================
+{% autoescape true %}{{ x }}{% endautoescape %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (autoescape_statement
+    (autoescape_open
+      (statement_begin)
+      (autoescape_keyword)
+      value: (boolean)
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (autoescape_close
+      (statement_begin)
+      (endautoescape_keyword)
+      (statement_end))))
+
+================================================================================
+Autoescape false
+================================================================================
+{% autoescape false %}{{ x }}{% endautoescape %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (autoescape_statement
+    (autoescape_open
+      (statement_begin)
+      (autoescape_keyword)
+      value: (boolean)
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (autoescape_close
+      (statement_begin)
+      (endautoescape_keyword)
+      (statement_end))))
+
+================================================================================
+Empty autoescape
+================================================================================
+{% autoescape true %}{% endautoescape %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (autoescape_statement
+    (autoescape_open
+      (statement_begin)
+      (autoescape_keyword)
+      value: (boolean)
+      (statement_end))
+    (autoescape_close
+      (statement_begin)
+      (endautoescape_keyword)
+      (statement_end))))

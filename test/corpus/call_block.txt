@@ -1,0 +1,123 @@
+================================================================================
+Basic call
+================================================================================
+{% call dialog() %}content{% endcall %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (call_block
+    (call_open
+      (statement_begin)
+      (call_keyword)
+      call: (function_call
+        name: (identifier))
+      (statement_end))
+    (text)
+    (call_close
+      (statement_begin)
+      (endcall_keyword)
+      (statement_end))))
+
+================================================================================
+Call with argument
+================================================================================
+{% call dialog("Title") %}content{% endcall %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (call_block
+    (call_open
+      (statement_begin)
+      (call_keyword)
+      call: (function_call
+        name: (identifier)
+        positional_argument: (string))
+      (statement_end))
+    (text)
+    (call_close
+      (statement_begin)
+      (endcall_keyword)
+      (statement_end))))
+
+================================================================================
+Call with caller argument
+================================================================================
+{% call(user) dump_users(users) %}{{ user }}{% endcall %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (call_block
+    (call_open
+      (statement_begin)
+      (call_keyword)
+      (caller_args
+        name: (identifier))
+      call: (function_call
+        name: (identifier)
+        positional_argument: (identifier))
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (call_close
+      (statement_begin)
+      (endcall_keyword)
+      (statement_end))))
+
+================================================================================
+Call with multiple caller arguments
+================================================================================
+{% call(a, b) func(x) %}{{ a }}{% endcall %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (call_block
+    (call_open
+      (statement_begin)
+      (call_keyword)
+      (caller_args
+        name: (identifier)
+        name: (identifier))
+      call: (function_call
+        name: (identifier)
+        positional_argument: (identifier))
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (call_close
+      (statement_begin)
+      (endcall_keyword)
+      (statement_end))))
+
+================================================================================
+Call with if inside
+================================================================================
+{% call dialog() %}{% if x %}y{% endif %}{% endcall %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (call_block
+    (call_open
+      (statement_begin)
+      (call_keyword)
+      call: (function_call
+        name: (identifier))
+      (statement_end))
+    (if_statement
+      (if_open
+        (statement_begin)
+        (if_keyword)
+        condition: (identifier)
+        (statement_end))
+      (text)
+      (if_close
+        (statement_begin)
+        (endif_keyword)
+        (statement_end)))
+    (call_close
+      (statement_begin)
+      (endcall_keyword)
+      (statement_end))))

@@ -1,0 +1,70 @@
+; Macro creates a new scope with parameters
+(macro_statement) @local.scope
+
+(macro_open
+  name: (identifier) @local.definition.function)
+
+(parameter
+  name: (identifier) @local.definition.parameter)
+
+; For loop creates scope for loop variables
+(for_statement) @local.scope
+
+(for_open
+  target: (identifier) @local.definition.variable)
+
+(for_open
+  target: (unpacking
+    (identifier) @local.definition.variable))
+
+; With statement creates scope for assignments
+(with_statement) @local.scope
+
+(with_open
+  (assignment
+    name: (identifier) @local.definition.variable))
+
+(with_open
+  (assignment
+    name: (unpacking
+      (identifier) @local.definition.variable)))
+
+; Call block creates scope for caller args
+(call_block) @local.scope
+
+(caller_args
+  name: (identifier) @local.definition.parameter)
+
+; Set statement defines variables (in current scope)
+(set_statement
+  (assignment
+    name: (identifier) @local.definition.variable))
+
+(set_statement
+  (assignment
+    name: (unpacking
+      (identifier) @local.definition.variable)))
+
+; Set block defines variable
+(set_block_open
+  target: (identifier) @local.definition.variable)
+
+; Trans variables
+(trans_open
+  (variable
+    name: (identifier) @local.definition.variable))
+
+; Import defines aliases
+(import_statement
+  alias: (identifier) @local.definition.variable)
+
+(from_statement
+  (import_name
+    name: (identifier) @local.definition.variable))
+
+(from_statement
+  (import_name
+    alias: (identifier) @local.definition.variable))
+
+; Variable references
+(identifier) @local.reference

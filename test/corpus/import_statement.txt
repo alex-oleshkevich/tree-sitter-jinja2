@@ -1,0 +1,65 @@
+================================================================================
+Basic import
+================================================================================
+{% import "forms.html" as forms %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (import_statement
+    (statement_begin)
+    (import_keyword)
+    template: (string)
+    (as_keyword)
+    alias: (identifier)
+    (statement_end)))
+
+================================================================================
+Import variable
+================================================================================
+{% import template_name as forms %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (import_statement
+    (statement_begin)
+    (import_keyword)
+    template: (identifier)
+    (as_keyword)
+    alias: (identifier)
+    (statement_end)))
+
+================================================================================
+Import with context
+================================================================================
+{% import "forms.html" as forms with context %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (import_statement
+    (statement_begin)
+    (import_keyword)
+    template: (string)
+    (as_keyword)
+    alias: (identifier)
+    (with_context
+      (with_keyword)
+      (context_keyword))
+    (statement_end)))
+
+================================================================================
+Import without context
+================================================================================
+{% import "forms.html" as forms without context %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (import_statement
+    (statement_begin)
+    (import_keyword)
+    template: (string)
+    (as_keyword)
+    alias: (identifier)
+    (without_context
+      (without_keyword)
+      (context_keyword))
+    (statement_end)))

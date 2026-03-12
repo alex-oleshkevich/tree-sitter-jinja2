@@ -1,0 +1,34 @@
+================================================================================
+Raw block
+================================================================================
+{% raw %}{{ not parsed }}{% endraw %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (raw_statement
+    (raw_open
+      (statement_begin)
+      (raw_keyword)
+      (statement_end))
+    (raw_content)
+    (raw_close
+      (statement_begin)
+      (endraw_keyword)
+      (statement_end))))
+
+================================================================================
+Empty raw
+================================================================================
+{% raw %}{% endraw %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (raw_statement
+    (raw_open
+      (statement_begin)
+      (raw_keyword)
+      (statement_end))
+    (raw_close
+      (statement_begin)
+      (endraw_keyword)
+      (statement_end))))

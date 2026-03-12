@@ -1,0 +1,113 @@
+================================================================================
+Simple test
+================================================================================
+{{ x is defined }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (test_expression
+      value: (identifier)
+      (is_keyword)
+      test: (identifier))
+    (print_end)))
+
+================================================================================
+Negated test
+================================================================================
+{{ x is not defined }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (test_expression
+      value: (identifier)
+      (is_keyword)
+      (not_keyword)
+      test: (identifier))
+    (print_end)))
+
+================================================================================
+Test with none
+================================================================================
+{{ x is none }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (test_expression
+      value: (identifier)
+      (is_keyword)
+      test: (none))
+    (print_end)))
+
+================================================================================
+Negated test with none
+================================================================================
+{{ x is not none }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (test_expression
+      value: (identifier)
+      (is_keyword)
+      (not_keyword)
+      test: (none))
+    (print_end)))
+
+================================================================================
+Test with argument
+================================================================================
+{{ x is divisibleby(3) }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (test_expression
+      value: (identifier)
+      (is_keyword)
+      test: (function_call
+        name: (identifier)
+        positional_argument: (number)))
+    (print_end)))
+
+================================================================================
+Test with identifier argument
+================================================================================
+{{ x is sameas(y) }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (test_expression
+      value: (identifier)
+      (is_keyword)
+      test: (function_call
+        name: (identifier)
+        positional_argument: (identifier)))
+    (print_end)))
+
+================================================================================
+Test on expression
+================================================================================
+{{ (x + 1) is defined }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (test_expression
+      value: (parenthesized_expression
+        (binary_expression
+          left: (identifier)
+          right: (number)))
+      (is_keyword)
+      test: (identifier))
+    (print_end)))

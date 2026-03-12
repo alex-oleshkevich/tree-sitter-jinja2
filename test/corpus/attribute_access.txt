@@ -1,0 +1,77 @@
+================================================================================
+Simple attribute access
+================================================================================
+{{ user.name }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (attribute_access
+      object: (identifier)
+      attribute: (identifier))
+    (print_end)))
+
+================================================================================
+Chained attribute access
+================================================================================
+{{ user.profile.name }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (attribute_access
+      object: (attribute_access
+        object: (identifier)
+        attribute: (identifier))
+      attribute: (identifier))
+    (print_end)))
+
+================================================================================
+Triple chained attribute access
+================================================================================
+{{ a.b.c.d }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (attribute_access
+      object: (attribute_access
+        object: (attribute_access
+          object: (identifier)
+          attribute: (identifier))
+        attribute: (identifier))
+      attribute: (identifier))
+    (print_end)))
+
+================================================================================
+Numeric attribute access
+================================================================================
+{{ items.0 }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (attribute_access
+      object: (identifier)
+      attribute: (number))
+    (print_end)))
+
+================================================================================
+Chained numeric attribute access
+================================================================================
+{{ items.0.name }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (attribute_access
+      object: (attribute_access
+        object: (identifier)
+        attribute: (number))
+      attribute: (identifier))
+    (print_end)))

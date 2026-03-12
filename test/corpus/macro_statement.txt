@@ -1,0 +1,202 @@
+================================================================================
+Empty macro no args
+================================================================================
+{% macro name() %}{% endmacro %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (macro_statement
+    (macro_open
+      (statement_begin)
+      (macro_keyword)
+      name: (identifier)
+      (statement_end))
+    (macro_close
+      (statement_begin)
+      (endmacro_keyword)
+      (statement_end))))
+
+================================================================================
+Macro with one parameter
+================================================================================
+{% macro greet(name) %}Hello {{ name }}{% endmacro %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (macro_statement
+    (macro_open
+      (statement_begin)
+      (macro_keyword)
+      name: (identifier)
+      (parameter
+        name: (identifier))
+      (statement_end))
+    (text)
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (macro_close
+      (statement_begin)
+      (endmacro_keyword)
+      (statement_end))))
+
+================================================================================
+Macro with multiple parameters
+================================================================================
+{% macro input(name, value, type) %}{% endmacro %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (macro_statement
+    (macro_open
+      (statement_begin)
+      (macro_keyword)
+      name: (identifier)
+      (parameter
+        name: (identifier))
+      (parameter
+        name: (identifier))
+      (parameter
+        name: (identifier))
+      (statement_end))
+    (macro_close
+      (statement_begin)
+      (endmacro_keyword)
+      (statement_end))))
+
+================================================================================
+Macro with default value
+================================================================================
+{% macro input(name, type="text") %}{% endmacro %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (macro_statement
+    (macro_open
+      (statement_begin)
+      (macro_keyword)
+      name: (identifier)
+      (parameter
+        name: (identifier))
+      (parameter
+        name: (identifier)
+        default: (string))
+      (statement_end))
+    (macro_close
+      (statement_begin)
+      (endmacro_keyword)
+      (statement_end))))
+
+================================================================================
+Macro with multiple defaults
+================================================================================
+{% macro button(text="Submit", type="button", disabled=false) %}{% endmacro %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (macro_statement
+    (macro_open
+      (statement_begin)
+      (macro_keyword)
+      name: (identifier)
+      (parameter
+        name: (identifier)
+        default: (string))
+      (parameter
+        name: (identifier)
+        default: (string))
+      (parameter
+        name: (identifier)
+        default: (boolean))
+      (statement_end))
+    (macro_close
+      (statement_begin)
+      (endmacro_keyword)
+      (statement_end))))
+
+================================================================================
+Macro with named endmacro
+================================================================================
+{% macro name() %}{% endmacro name %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (macro_statement
+    (macro_open
+      (statement_begin)
+      (macro_keyword)
+      name: (identifier)
+      (statement_end))
+    (macro_close
+      (statement_begin)
+      (endmacro_keyword)
+      name: (identifier)
+      (statement_end))))
+
+================================================================================
+Macro with if inside
+================================================================================
+{% macro show(visible) %}{% if visible %}shown{% endif %}{% endmacro %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (macro_statement
+    (macro_open
+      (statement_begin)
+      (macro_keyword)
+      name: (identifier)
+      (parameter
+        name: (identifier))
+      (statement_end))
+    (if_statement
+      (if_open
+        (statement_begin)
+        (if_keyword)
+        condition: (identifier)
+        (statement_end))
+      (text)
+      (if_close
+        (statement_begin)
+        (endif_keyword)
+        (statement_end)))
+    (macro_close
+      (statement_begin)
+      (endmacro_keyword)
+      (statement_end))))
+
+================================================================================
+Macro with for inside
+================================================================================
+{% macro list(items) %}{% for item in items %}{{ item }}{% endfor %}{% endmacro %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (macro_statement
+    (macro_open
+      (statement_begin)
+      (macro_keyword)
+      name: (identifier)
+      (parameter
+        name: (identifier))
+      (statement_end))
+    (for_statement
+      (for_open
+        (statement_begin)
+        (for_keyword)
+        target: (identifier)
+        (in_keyword)
+        iterable: (identifier)
+        (statement_end))
+      (print
+        (print_begin)
+        (identifier)
+        (print_end))
+      (for_close
+        (statement_begin)
+        (endfor_keyword)
+        (statement_end)))
+    (macro_close
+      (statement_begin)
+      (endmacro_keyword)
+      (statement_end))))

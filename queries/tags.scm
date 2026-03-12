@@ -1,0 +1,15 @@
+(macro_statement
+  (macro_open
+    name: (identifier) @name)) @definition.function
+
+(block_statement
+  (block_open
+    name: (identifier) @name)) @definition.class
+
+(set_statement
+  (assignment
+    name: (identifier) @name)) @definition.variable
+
+(set_block
+  (set_block_open
+    target: (identifier) @name)) @definition.variable

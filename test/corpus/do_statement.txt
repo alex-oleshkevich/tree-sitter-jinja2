@@ -1,0 +1,49 @@
+================================================================================
+Do with method call
+================================================================================
+{% do items.append(1) %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (do_statement
+    (statement_begin)
+    (do_keyword)
+    expression: (method_call
+      object: (identifier)
+      method: (identifier)
+      positional_argument: (number))
+    (statement_end)))
+
+================================================================================
+Do with function call
+================================================================================
+{% do print(x) %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (do_statement
+    (statement_begin)
+    (do_keyword)
+    expression: (function_call
+      name: (identifier)
+      positional_argument: (identifier))
+    (statement_end)))
+
+================================================================================
+Do with update
+================================================================================
+{% do x.update({"a": 1}) %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (do_statement
+    (statement_begin)
+    (do_keyword)
+    expression: (method_call
+      object: (identifier)
+      method: (identifier)
+      positional_argument: (dict
+        (pair
+          key: (string)
+          value: (number))))
+    (statement_end)))

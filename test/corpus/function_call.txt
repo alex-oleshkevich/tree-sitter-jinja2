@@ -1,0 +1,139 @@
+================================================================================
+Function call no args
+================================================================================
+{{ fn() }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (function_call
+      name: (identifier))
+    (print_end)))
+
+================================================================================
+Chained function call
+================================================================================
+{{ fn()() }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (function_call
+      name: (function_call
+        name: (identifier)))
+    (print_end)))
+
+================================================================================
+Single positional argument
+================================================================================
+{{ fn(a) }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (function_call
+      name: (identifier)
+      positional_argument: (identifier))
+    (print_end)))
+
+================================================================================
+Multiple positional arguments
+================================================================================
+{{ fn(a, b) }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (function_call
+      name: (identifier)
+      positional_argument: (identifier)
+      positional_argument: (identifier))
+    (print_end)))
+
+================================================================================
+Single keyword argument
+================================================================================
+{{ fn(a=1) }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (function_call
+      name: (identifier)
+      (keyword_argument
+        name: (identifier)
+        value: (number)))
+    (print_end)))
+
+================================================================================
+Multiple keyword arguments
+================================================================================
+{{ fn(a=1, b=2) }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (function_call
+      name: (identifier)
+      (keyword_argument
+        name: (identifier)
+        value: (number))
+      (keyword_argument
+        name: (identifier)
+        value: (number)))
+    (print_end)))
+
+================================================================================
+Mixed positional and keyword arguments
+================================================================================
+{{ fn(a, b, c=1) }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (function_call
+      name: (identifier)
+      positional_argument: (identifier)
+      positional_argument: (identifier)
+      (keyword_argument
+        name: (identifier)
+        value: (number)))
+    (print_end)))
+
+================================================================================
+Trailing comma
+================================================================================
+{{ fn(a, b,) }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (function_call
+      name: (identifier)
+      positional_argument: (identifier)
+      positional_argument: (identifier))
+    (print_end)))
+
+================================================================================
+Keyword argument with space after equals
+================================================================================
+{{ fn(a= 1) }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (function_call
+      name: (identifier)
+      (keyword_argument
+        name: (identifier)
+        value: (number)))
+    (print_end)))

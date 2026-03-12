@@ -1,0 +1,60 @@
+================================================================================
+Extends with string
+================================================================================
+{% extends "base.html" %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (extends_statement
+    (statement_begin)
+    (extends_keyword)
+    template: (string)
+    (statement_end)))
+
+================================================================================
+Extends with variable
+================================================================================
+{% extends parent_template %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (extends_statement
+    (statement_begin)
+    (extends_keyword)
+    template: (identifier)
+    (statement_end)))
+
+================================================================================
+Extends with expression
+================================================================================
+{% extends "layouts/" ~ layout ~ ".html" %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (extends_statement
+    (statement_begin)
+    (extends_keyword)
+    template: (binary_expression
+      left: (binary_expression
+        left: (string)
+        right: (identifier))
+      right: (string))
+    (statement_end)))
+
+================================================================================
+Extends with conditional
+================================================================================
+{% extends "a.html" if x else "b.html" %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (extends_statement
+    (statement_begin)
+    (extends_keyword)
+    template: (ternary_expression
+      value: (string)
+      (if_keyword)
+      condition: (identifier)
+      (else_keyword)
+      alternative: (string))
+    (statement_end)))

@@ -1,0 +1,143 @@
+================================================================================
+Basic trans
+================================================================================
+{% trans %}Hello{% endtrans %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (trans_statement
+    (trans_open
+      (statement_begin)
+      (trans_keyword)
+      (statement_end))
+    (text)
+    (trans_close
+      (statement_begin)
+      (endtrans_keyword)
+      (statement_end))))
+
+================================================================================
+Trans with variable
+================================================================================
+{% trans name %}Hello {{ name }}{% endtrans %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (trans_statement
+    (trans_open
+      (statement_begin)
+      (trans_keyword)
+      (variable
+        name: (identifier))
+      (statement_end))
+    (text)
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (trans_close
+      (statement_begin)
+      (endtrans_keyword)
+      (statement_end))))
+
+================================================================================
+Trans with assignment
+================================================================================
+{% trans count=num %}{{ count }} item{% endtrans %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (trans_statement
+    (trans_open
+      (statement_begin)
+      (trans_keyword)
+      (variable
+        name: (identifier)
+        value: (identifier))
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (text)
+    (trans_close
+      (statement_begin)
+      (endtrans_keyword)
+      (statement_end))))
+
+================================================================================
+Trans with pluralize
+================================================================================
+{% trans count=num %}item{% pluralize %}items{% endtrans %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (trans_statement
+    (trans_open
+      (statement_begin)
+      (trans_keyword)
+      (variable
+        name: (identifier)
+        value: (identifier))
+      (statement_end))
+    (text)
+    (pluralize_clause
+      (statement_begin)
+      (pluralize_keyword)
+      (statement_end))
+    (text)
+    (trans_close
+      (statement_begin)
+      (endtrans_keyword)
+      (statement_end))))
+
+================================================================================
+Trans trimmed
+================================================================================
+{% trans trimmed %}  Hello  {% endtrans %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (trans_statement
+    (trans_open
+      (statement_begin)
+      (trans_keyword)
+      (trimmed_keyword)
+      (statement_end))
+    (text)
+    (trans_close
+      (statement_begin)
+      (endtrans_keyword)
+      (statement_end))))
+
+================================================================================
+Trans with multiple variables
+================================================================================
+{% trans count=num, name=x %}{{ count }} {{ name }}{% endtrans %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (trans_statement
+    (trans_open
+      (statement_begin)
+      (trans_keyword)
+      (variable
+        name: (identifier)
+        value: (identifier))
+      (variable
+        name: (identifier)
+        value: (identifier))
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (text)
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (trans_close
+      (statement_begin)
+      (endtrans_keyword)
+      (statement_end))))

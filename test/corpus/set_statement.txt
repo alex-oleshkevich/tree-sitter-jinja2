@@ -1,0 +1,165 @@
+================================================================================
+Simple set
+================================================================================
+{% set x = 1 %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (set_statement
+    (statement_begin)
+    (set_keyword)
+    (assignment
+      name: (identifier)
+      value: (number))
+    (statement_end)))
+
+================================================================================
+Set with expression
+================================================================================
+{% set x = y + 1 %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (set_statement
+    (statement_begin)
+    (set_keyword)
+    (assignment
+      name: (identifier)
+      value: (binary_expression
+        left: (identifier)
+        right: (number)))
+    (statement_end)))
+
+================================================================================
+Set tuple unpacking
+================================================================================
+{% set x, y = (1, 2) %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (set_statement
+    (statement_begin)
+    (set_keyword)
+    (assignment
+      name: (unpacking
+        (identifier)
+        (identifier))
+      value: (tuple
+        (number)
+        (number)))
+    (statement_end)))
+
+================================================================================
+Set namespace attribute
+================================================================================
+{% set ns.x = 1 %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (set_statement
+    (statement_begin)
+    (set_keyword)
+    (assignment
+      name: (attribute_access
+        object: (identifier)
+        attribute: (identifier))
+      value: (number))
+    (statement_end)))
+
+================================================================================
+Set block
+================================================================================
+{% set x %}content{% endset %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (set_block
+    (set_block_open
+      (statement_begin)
+      (set_keyword)
+      target: (identifier)
+      (statement_end))
+    (text)
+    (set_block_close
+      (statement_begin)
+      (endset_keyword)
+      (statement_end))))
+
+================================================================================
+Set block with filter
+================================================================================
+{% set x | trim %}content{% endset %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (set_block
+    (set_block_open
+      (statement_begin)
+      (set_keyword)
+      target: (identifier)
+      filter: (identifier)
+      (statement_end))
+    (text)
+    (set_block_close
+      (statement_begin)
+      (endset_keyword)
+      (statement_end))))
+
+================================================================================
+Set block with print inside
+================================================================================
+{% set x %}{{ y }}{% endset %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (set_block
+    (set_block_open
+      (statement_begin)
+      (set_keyword)
+      target: (identifier)
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (set_block_close
+      (statement_begin)
+      (endset_keyword)
+      (statement_end))))
+
+================================================================================
+Set with string value
+================================================================================
+{% set name = "hello" %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (set_statement
+    (statement_begin)
+    (set_keyword)
+    (assignment
+      name: (identifier)
+      value: (string))
+    (statement_end)))
+
+================================================================================
+Set block with filter function
+================================================================================
+{% set x | trim(" ") %}content{% endset %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (set_block
+    (set_block_open
+      (statement_begin)
+      (set_keyword)
+      target: (identifier)
+      filter: (function_call
+        name: (identifier)
+        positional_argument: (string))
+      (statement_end))
+    (text)
+    (set_block_close
+      (statement_begin)
+      (endset_keyword)
+      (statement_end))))

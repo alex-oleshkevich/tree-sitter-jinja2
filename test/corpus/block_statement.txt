@@ -1,0 +1,166 @@
+================================================================================
+Simple block
+================================================================================
+{% block name %}content{% endblock %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (block_statement
+    (block_open
+      (statement_begin)
+      (block_keyword)
+      name: (identifier)
+      (statement_end))
+    (text)
+    (block_close
+      (statement_begin)
+      (endblock_keyword)
+      (statement_end))))
+
+================================================================================
+Block with named endblock
+================================================================================
+{% block name %}content{% endblock name %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (block_statement
+    (block_open
+      (statement_begin)
+      (block_keyword)
+      name: (identifier)
+      (statement_end))
+    (text)
+    (block_close
+      (statement_begin)
+      (endblock_keyword)
+      name: (identifier)
+      (statement_end))))
+
+================================================================================
+Block with scoped
+================================================================================
+{% block name scoped %}content{% endblock %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (block_statement
+    (block_open
+      (statement_begin)
+      (block_keyword)
+      name: (identifier)
+      (scoped_keyword)
+      (statement_end))
+    (text)
+    (block_close
+      (statement_begin)
+      (endblock_keyword)
+      (statement_end))))
+
+================================================================================
+Block with required
+================================================================================
+{% block name required %}{% endblock %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (block_statement
+    (block_open
+      (statement_begin)
+      (block_keyword)
+      name: (identifier)
+      (required_keyword)
+      (statement_end))
+    (block_close
+      (statement_begin)
+      (endblock_keyword)
+      (statement_end))))
+
+================================================================================
+Block with scoped and required
+================================================================================
+{% block name scoped required %}{% endblock %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (block_statement
+    (block_open
+      (statement_begin)
+      (block_keyword)
+      name: (identifier)
+      (scoped_keyword)
+      (required_keyword)
+      (statement_end))
+    (block_close
+      (statement_begin)
+      (endblock_keyword)
+      (statement_end))))
+
+================================================================================
+Block with print inside
+================================================================================
+{% block title %}{{ page_title }}{% endblock %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (block_statement
+    (block_open
+      (statement_begin)
+      (block_keyword)
+      name: (identifier)
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (block_close
+      (statement_begin)
+      (endblock_keyword)
+      (statement_end))))
+
+================================================================================
+Nested blocks
+================================================================================
+{% block outer %}{% block inner %}content{% endblock %}{% endblock %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (block_statement
+    (block_open
+      (statement_begin)
+      (block_keyword)
+      name: (identifier)
+      (statement_end))
+    (block_statement
+      (block_open
+        (statement_begin)
+        (block_keyword)
+        name: (identifier)
+        (statement_end))
+      (text)
+      (block_close
+        (statement_begin)
+        (endblock_keyword)
+        (statement_end)))
+    (block_close
+      (statement_begin)
+      (endblock_keyword)
+      (statement_end))))
+
+================================================================================
+Empty block
+================================================================================
+{% block name %}{% endblock %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (block_statement
+    (block_open
+      (statement_begin)
+      (block_keyword)
+      name: (identifier)
+      (statement_end))
+    (block_close
+      (statement_begin)
+      (endblock_keyword)
+      (statement_end))))

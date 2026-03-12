@@ -1,0 +1,218 @@
+================================================================================
+Simple if
+================================================================================
+{% if x %}yes{% endif %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (if_statement
+    (if_open
+      (statement_begin)
+      (if_keyword)
+      condition: (identifier)
+      (statement_end))
+    (text)
+    (if_close
+      (statement_begin)
+      (endif_keyword)
+      (statement_end))))
+
+================================================================================
+If with else
+================================================================================
+{% if x %}yes{% else %}no{% endif %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (if_statement
+    (if_open
+      (statement_begin)
+      (if_keyword)
+      condition: (identifier)
+      (statement_end))
+    (text)
+    (else_clause
+      (statement_begin)
+      (else_keyword)
+      (statement_end))
+    (text)
+    (if_close
+      (statement_begin)
+      (endif_keyword)
+      (statement_end))))
+
+================================================================================
+If with elif
+================================================================================
+{% if x %}a{% elif y %}b{% endif %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (if_statement
+    (if_open
+      (statement_begin)
+      (if_keyword)
+      condition: (identifier)
+      (statement_end))
+    (text)
+    (elif_clause
+      (statement_begin)
+      (elif_keyword)
+      condition: (identifier)
+      (statement_end))
+    (text)
+    (if_close
+      (statement_begin)
+      (endif_keyword)
+      (statement_end))))
+
+================================================================================
+If with elif and else
+================================================================================
+{% if x %}a{% elif y %}b{% else %}c{% endif %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (if_statement
+    (if_open
+      (statement_begin)
+      (if_keyword)
+      condition: (identifier)
+      (statement_end))
+    (text)
+    (elif_clause
+      (statement_begin)
+      (elif_keyword)
+      condition: (identifier)
+      (statement_end))
+    (text)
+    (else_clause
+      (statement_begin)
+      (else_keyword)
+      (statement_end))
+    (text)
+    (if_close
+      (statement_begin)
+      (endif_keyword)
+      (statement_end))))
+
+================================================================================
+Multiple elif
+================================================================================
+{% if a %}1{% elif b %}2{% elif c %}3{% endif %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (if_statement
+    (if_open
+      (statement_begin)
+      (if_keyword)
+      condition: (identifier)
+      (statement_end))
+    (text)
+    (elif_clause
+      (statement_begin)
+      (elif_keyword)
+      condition: (identifier)
+      (statement_end))
+    (text)
+    (elif_clause
+      (statement_begin)
+      (elif_keyword)
+      condition: (identifier)
+      (statement_end))
+    (text)
+    (if_close
+      (statement_begin)
+      (endif_keyword)
+      (statement_end))))
+
+================================================================================
+Empty if body
+================================================================================
+{% if x %}{% endif %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (if_statement
+    (if_open
+      (statement_begin)
+      (if_keyword)
+      condition: (identifier)
+      (statement_end))
+    (if_close
+      (statement_begin)
+      (endif_keyword)
+      (statement_end))))
+
+================================================================================
+If with expression condition
+================================================================================
+{% if x > 0 %}positive{% endif %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (if_statement
+    (if_open
+      (statement_begin)
+      (if_keyword)
+      condition: (binary_expression
+        left: (identifier)
+        right: (number))
+      (statement_end))
+    (text)
+    (if_close
+      (statement_begin)
+      (endif_keyword)
+      (statement_end))))
+
+================================================================================
+Nested if
+================================================================================
+{% if x %}{% if y %}inner{% endif %}{% endif %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (if_statement
+    (if_open
+      (statement_begin)
+      (if_keyword)
+      condition: (identifier)
+      (statement_end))
+    (if_statement
+      (if_open
+        (statement_begin)
+        (if_keyword)
+        condition: (identifier)
+        (statement_end))
+      (text)
+      (if_close
+        (statement_begin)
+        (endif_keyword)
+        (statement_end)))
+    (if_close
+      (statement_begin)
+      (endif_keyword)
+      (statement_end))))
+
+================================================================================
+If with print inside
+================================================================================
+{% if x %}{{ y }}{% endif %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (if_statement
+    (if_open
+      (statement_begin)
+      (if_keyword)
+      condition: (identifier)
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (if_close
+      (statement_begin)
+      (endif_keyword)
+      (statement_end))))

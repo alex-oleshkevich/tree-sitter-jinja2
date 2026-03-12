@@ -1,0 +1,125 @@
+================================================================================
+Simple filter
+================================================================================
+{{ x|upper }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (filter
+      value: (identifier)
+      name: (identifier))
+    (print_end)))
+
+================================================================================
+Filter with argument
+================================================================================
+{{ x|default("") }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (filter
+      value: (identifier)
+      name: (identifier)
+      positional_argument: (string))
+    (print_end)))
+
+================================================================================
+Filter with multiple arguments
+================================================================================
+{{ x|join(", ") }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (filter
+      value: (identifier)
+      name: (identifier)
+      positional_argument: (string))
+    (print_end)))
+
+================================================================================
+Chained filters
+================================================================================
+{{ x|trim|upper }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (filter
+      value: (filter
+        value: (identifier)
+        name: (identifier))
+      name: (identifier))
+    (print_end)))
+
+================================================================================
+Filter on parenthesized expression
+================================================================================
+{{ (x + y)|abs }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (filter
+      value: (parenthesized_expression
+        (binary_expression
+          left: (identifier)
+          right: (identifier)))
+      name: (identifier))
+    (print_end)))
+
+================================================================================
+Filter with keyword argument
+================================================================================
+{{ x|default(value="") }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (filter
+      value: (identifier)
+      name: (identifier)
+      (keyword_argument
+        name: (identifier)
+        value: (string)))
+    (print_end)))
+
+================================================================================
+Filter precedence over addition
+================================================================================
+{{ x|string + y }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (binary_expression
+      left: (filter
+        value: (identifier)
+        name: (identifier))
+      right: (identifier))
+    (print_end)))
+
+================================================================================
+Filter on method call
+================================================================================
+{{ name.strip()|upper }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (filter
+      value: (method_call
+        object: (identifier)
+        method: (identifier))
+      name: (identifier))
+    (print_end)))

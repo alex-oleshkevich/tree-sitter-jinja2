@@ -1,0 +1,61 @@
+================================================================================
+Simple method call
+================================================================================
+{{ o.fn() }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (method_call
+      object: (identifier)
+      method: (identifier))
+    (print_end)))
+
+================================================================================
+Method call with positional argument
+================================================================================
+{{ o.fn(a) }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (method_call
+      object: (identifier)
+      method: (identifier)
+      positional_argument: (identifier))
+    (print_end)))
+
+================================================================================
+Method call with keyword argument
+================================================================================
+{{ o.fn(a=1) }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (method_call
+      object: (identifier)
+      method: (identifier)
+      (keyword_argument
+        name: (identifier)
+        value: (number)))
+    (print_end)))
+
+================================================================================
+Chained method call
+================================================================================
+{{ o.fn().bar() }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (method_call
+      object: (method_call
+        object: (identifier)
+        method: (identifier))
+      method: (identifier))
+    (print_end)))

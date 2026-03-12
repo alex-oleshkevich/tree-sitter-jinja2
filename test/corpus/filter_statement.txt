@@ -1,0 +1,80 @@
+================================================================================
+Basic filter statement
+================================================================================
+{% filter upper %}hello{% endfilter %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (filter_statement
+    (filter_open
+      (statement_begin)
+      (filter_keyword)
+      name: (identifier)
+      (statement_end))
+    (text)
+    (filter_close
+      (statement_begin)
+      (endfilter_keyword)
+      (statement_end))))
+
+================================================================================
+Filter statement with arguments
+================================================================================
+{% filter replace("o", "0") %}hello{% endfilter %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (filter_statement
+    (filter_open
+      (statement_begin)
+      (filter_keyword)
+      name: (function_call
+        name: (identifier)
+        positional_argument: (string)
+        positional_argument: (string))
+      (statement_end))
+    (text)
+    (filter_close
+      (statement_begin)
+      (endfilter_keyword)
+      (statement_end))))
+
+================================================================================
+Filter statement with print inside
+================================================================================
+{% filter upper %}{{ name }}{% endfilter %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (filter_statement
+    (filter_open
+      (statement_begin)
+      (filter_keyword)
+      name: (identifier)
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (filter_close
+      (statement_begin)
+      (endfilter_keyword)
+      (statement_end))))
+
+================================================================================
+Empty filter statement
+================================================================================
+{% filter trim %}{% endfilter %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (filter_statement
+    (filter_open
+      (statement_begin)
+      (filter_keyword)
+      name: (identifier)
+      (statement_end))
+    (filter_close
+      (statement_begin)
+      (endfilter_keyword)
+      (statement_end))))

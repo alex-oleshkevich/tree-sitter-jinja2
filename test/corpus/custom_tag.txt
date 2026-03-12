@@ -1,0 +1,294 @@
+================================================================================
+Simple custom tag
+================================================================================
+{% cache %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (custom_open
+    (statement_begin)
+    name: (identifier)
+    (statement_end)))
+
+================================================================================
+Custom tag with argument
+================================================================================
+{% cache "key" %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (custom_open
+    (statement_begin)
+    name: (identifier)
+    argument: (string)
+    (statement_end)))
+
+================================================================================
+Custom tag with multiple arguments
+================================================================================
+{% cache "key" 300 %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (custom_open
+    (statement_begin)
+    name: (identifier)
+    argument: (string)
+    argument: (number)
+    (statement_end)))
+
+================================================================================
+Custom end tag
+================================================================================
+{% endcache %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (custom_close
+    (statement_begin)
+    name: (identifier)
+    (statement_end)))
+
+================================================================================
+Custom block pair
+================================================================================
+{% cache "key" %}content{% endcache %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (custom_open
+    (statement_begin)
+    name: (identifier)
+    argument: (string)
+    (statement_end))
+  (text)
+  (custom_close
+    (statement_begin)
+    name: (identifier)
+    (statement_end)))
+
+================================================================================
+Custom tag with expression argument
+================================================================================
+{% cache key_var %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (custom_open
+    (statement_begin)
+    name: (identifier)
+    argument: (identifier)
+    (statement_end)))
+
+================================================================================
+Custom tag with keyword argument
+================================================================================
+{% cache key="mykey" timeout=300 %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (custom_open
+    (statement_begin)
+    name: (identifier)
+    argument: (keyword_argument
+      name: (identifier)
+      value: (string))
+    argument: (keyword_argument
+      name: (identifier)
+      value: (number))
+    (statement_end)))
+
+================================================================================
+Custom tag with mixed arguments
+================================================================================
+{% cache "prefix" timeout=300 %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (custom_open
+    (statement_begin)
+    name: (identifier)
+    argument: (string)
+    argument: (keyword_argument
+      name: (identifier)
+      value: (number))
+    (statement_end)))
+
+================================================================================
+Custom block with if inside
+================================================================================
+{% cache "key" %}{% if x %}{{ x }}{% endif %}{% endcache %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (custom_open
+    (statement_begin)
+    name: (identifier)
+    argument: (string)
+    (statement_end))
+  (if_statement
+    (if_open
+      (statement_begin)
+      (if_keyword)
+      condition: (identifier)
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (if_close
+      (statement_begin)
+      (endif_keyword)
+      (statement_end)))
+  (custom_close
+    (statement_begin)
+    name: (identifier)
+    (statement_end)))
+
+================================================================================
+Custom block with for inside
+================================================================================
+{% cache "list" %}{% for item in items %}{{ item }}{% endfor %}{% endcache %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (custom_open
+    (statement_begin)
+    name: (identifier)
+    argument: (string)
+    (statement_end))
+  (for_statement
+    (for_open
+      (statement_begin)
+      (for_keyword)
+      target: (identifier)
+      (in_keyword)
+      iterable: (identifier)
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (for_close
+      (statement_begin)
+      (endfor_keyword)
+      (statement_end)))
+  (custom_close
+    (statement_begin)
+    name: (identifier)
+    (statement_end)))
+
+================================================================================
+Nested custom blocks
+================================================================================
+{% cache "outer" %}{% cache "inner" %}content{% endcache %}{% endcache %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (custom_open
+    (statement_begin)
+    name: (identifier)
+    argument: (string)
+    (statement_end))
+  (custom_open
+    (statement_begin)
+    name: (identifier)
+    argument: (string)
+    (statement_end))
+  (text)
+  (custom_close
+    (statement_begin)
+    name: (identifier)
+    (statement_end))
+  (custom_close
+    (statement_begin)
+    name: (identifier)
+    (statement_end)))
+
+================================================================================
+Custom block with macro inside
+================================================================================
+{% myblock %}{% macro greet(name) %}Hello {{ name }}{% endmacro %}{% endmyblock %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (custom_open
+    (statement_begin)
+    name: (identifier)
+    (statement_end))
+  (macro_statement
+    (macro_open
+      (statement_begin)
+      (macro_keyword)
+      name: (identifier)
+      (parameter
+        name: (identifier))
+      (statement_end))
+    (text)
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (macro_close
+      (statement_begin)
+      (endmacro_keyword)
+      (statement_end)))
+  (custom_close
+    (statement_begin)
+    name: (identifier)
+    (statement_end)))
+
+================================================================================
+Custom block with call inside
+================================================================================
+{% section %}{% call dialog() %}content{% endcall %}{% endsection %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (custom_open
+    (statement_begin)
+    name: (identifier)
+    (statement_end))
+  (call_block
+    (call_open
+      (statement_begin)
+      (call_keyword)
+      call: (function_call
+        name: (identifier))
+      (statement_end))
+    (text)
+    (call_close
+      (statement_begin)
+      (endcall_keyword)
+      (statement_end)))
+  (custom_close
+    (statement_begin)
+    name: (identifier)
+    (statement_end)))
+
+================================================================================
+Multiple different custom tags
+================================================================================
+{% cache "a" %}x{% endcache %}{% markdown %}text{% endmarkdown %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (custom_open
+    (statement_begin)
+    name: (identifier)
+    argument: (string)
+    (statement_end))
+  (text)
+  (custom_close
+    (statement_begin)
+    name: (identifier)
+    (statement_end))
+  (custom_open
+    (statement_begin)
+    name: (identifier)
+    (statement_end))
+  (text)
+  (custom_close
+    (statement_begin)
+    name: (identifier)
+    (statement_end)))

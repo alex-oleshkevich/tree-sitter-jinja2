@@ -1,0 +1,144 @@
+================================================================================
+Simple include
+================================================================================
+{% include "header.html" %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (include_statement
+    (statement_begin)
+    (include_keyword)
+    template: (string)
+    (statement_end)))
+
+================================================================================
+Include with variable
+================================================================================
+{% include template_name %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (include_statement
+    (statement_begin)
+    (include_keyword)
+    template: (identifier)
+    (statement_end)))
+
+================================================================================
+Include ignore missing
+================================================================================
+{% include "header.html" ignore missing %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (include_statement
+    (statement_begin)
+    (include_keyword)
+    template: (string)
+    (ignore_missing
+      (ignore_keyword)
+      (missing_keyword))
+    (statement_end)))
+
+================================================================================
+Include with context
+================================================================================
+{% include "header.html" with context %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (include_statement
+    (statement_begin)
+    (include_keyword)
+    template: (string)
+    (with_context
+      (with_keyword)
+      (context_keyword))
+    (statement_end)))
+
+================================================================================
+Include without context
+================================================================================
+{% include "header.html" without context %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (include_statement
+    (statement_begin)
+    (include_keyword)
+    template: (string)
+    (without_context
+      (without_keyword)
+      (context_keyword))
+    (statement_end)))
+
+================================================================================
+Include ignore missing with context
+================================================================================
+{% include "header.html" ignore missing with context %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (include_statement
+    (statement_begin)
+    (include_keyword)
+    template: (string)
+    (ignore_missing
+      (ignore_keyword)
+      (missing_keyword))
+    (with_context
+      (with_keyword)
+      (context_keyword))
+    (statement_end)))
+
+================================================================================
+Include ignore missing without context
+================================================================================
+{% include "header.html" ignore missing without context %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (include_statement
+    (statement_begin)
+    (include_keyword)
+    template: (string)
+    (ignore_missing
+      (ignore_keyword)
+      (missing_keyword))
+    (without_context
+      (without_keyword)
+      (context_keyword))
+    (statement_end)))
+
+================================================================================
+Include list of templates
+================================================================================
+{% include ["a.html", "b.html"] %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (include_statement
+    (statement_begin)
+    (include_keyword)
+    template: (list
+      (string)
+      (string))
+    (statement_end)))
+
+================================================================================
+Include with ternary expression
+================================================================================
+{% include "a.html" if x else "b.html" %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (include_statement
+    (statement_begin)
+    (include_keyword)
+    template: (ternary_expression
+      value: (string)
+      (if_keyword)
+      condition: (identifier)
+      (else_keyword)
+      alternative: (string))
+    (statement_end)))

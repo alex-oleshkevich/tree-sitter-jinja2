@@ -1,0 +1,97 @@
+================================================================================
+Basic with
+================================================================================
+{% with x = 1 %}{{ x }}{% endwith %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (with_statement
+    (with_open
+      (statement_begin)
+      (with_keyword)
+      (assignment
+        name: (identifier)
+        value: (number))
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (with_close
+      (statement_begin)
+      (endwith_keyword)
+      (statement_end))))
+
+================================================================================
+With multiple assignments
+================================================================================
+{% with x = 1, y = 2 %}{{ x }}{% endwith %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (with_statement
+    (with_open
+      (statement_begin)
+      (with_keyword)
+      (assignment
+        name: (identifier)
+        value: (number))
+      (assignment
+        name: (identifier)
+        value: (number))
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (with_close
+      (statement_begin)
+      (endwith_keyword)
+      (statement_end))))
+
+================================================================================
+With empty
+================================================================================
+{% with %}{{ x }}{% endwith %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (with_statement
+    (with_open
+      (statement_begin)
+      (with_keyword)
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (with_close
+      (statement_begin)
+      (endwith_keyword)
+      (statement_end))))
+
+================================================================================
+With expression value
+================================================================================
+{% with total = price * qty %}{{ total }}{% endwith %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (with_statement
+    (with_open
+      (statement_begin)
+      (with_keyword)
+      (assignment
+        name: (identifier)
+        value: (binary_expression
+          left: (identifier)
+          right: (identifier)))
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (with_close
+      (statement_begin)
+      (endwith_keyword)
+      (statement_end))))
