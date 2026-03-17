@@ -17,6 +17,7 @@ module.exports = grammar({
     [$._primary_expression, $.unpacking],
     [$.function_call, $._primary_expression],
     [$.subscript, $._expression],
+    [$.trans_open, $._literal],
   ],
   rules: {
     source_file: $ => repeat($._node),
@@ -520,18 +521,16 @@ module.exports = grammar({
       $.with_close,
     ),
 
-    variable: $ => seq(
-      field('name', $.identifier),
-      optional(seq('=', field('value', $._expression))),
+    trans_arguments: $ => seq(
+      $.assignment,
+      repeat(seq(',', $.assignment)),
     ),
     trans_open: $ => seq(
       $.statement_begin,
       $.trans_keyword,
+      optional(field('context', $.string)),
       optional($.trimmed_keyword),
-      optional(seq(
-        $.variable,
-        repeat(seq(',', $.variable)),
-      )),
+      optional(field('arguments', $.trans_arguments)),
       $.statement_end,
     ),
     pluralize_clause: $ => seq(

@@ -3783,41 +3783,28 @@
         }
       ]
     },
-    "variable": {
+    "trans_arguments": {
       "type": "SEQ",
       "members": [
         {
-          "type": "FIELD",
-          "name": "name",
-          "content": {
-            "type": "SYMBOL",
-            "name": "identifier"
-          }
+          "type": "SYMBOL",
+          "name": "assignment"
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "="
-                },
-                {
-                  "type": "FIELD",
-                  "name": "value",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "_expression"
-                  }
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ","
+              },
+              {
+                "type": "SYMBOL",
+                "name": "assignment"
+              }
+            ]
+          }
         }
       ]
     },
@@ -3836,6 +3823,22 @@
           "type": "CHOICE",
           "members": [
             {
+              "type": "FIELD",
+              "name": "context",
+              "content": {
+                "type": "SYMBOL",
+                "name": "string"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
               "type": "SYMBOL",
               "name": "trimmed_keyword"
             },
@@ -3848,29 +3851,12 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "variable"
-                },
-                {
-                  "type": "REPEAT",
-                  "content": {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "STRING",
-                        "value": ","
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "variable"
-                      }
-                    ]
-                  }
-                }
-              ]
+              "type": "FIELD",
+              "name": "arguments",
+              "content": {
+                "type": "SYMBOL",
+                "name": "trans_arguments"
+              }
             },
             {
               "type": "BLANK"
@@ -4377,6 +4363,10 @@
     [
       "subscript",
       "_expression"
+    ],
+    [
+      "trans_open",
+      "_literal"
     ]
   ],
   "precedences": [],

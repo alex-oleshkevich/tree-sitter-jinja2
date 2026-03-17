@@ -56,8 +56,9 @@
 
 ; Trans variables
 (trans_open
-  (variable
-    name: (identifier) @local.definition.variable))
+  (trans_arguments
+    (assignment
+      name: (identifier) @local.definition.variable)))
 
 ; Import defines aliases
 (import_statement

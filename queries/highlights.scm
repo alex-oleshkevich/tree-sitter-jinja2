@@ -101,14 +101,10 @@
 (set_block_open filter: (filter name: (identifier) @function.call))
 
 ; Template references
-(extends_statement template: (string) @string)
-(extends_statement template: (identifier) @variable)
-(include_statement template: (string) @string)
-(include_statement template: (identifier) @variable)
-(import_statement template: (string) @string)
-(import_statement template: (identifier) @variable)
-(from_statement template: (string) @string)
-(from_statement template: (identifier) @variable)
+(extends_statement template: (_) @string)
+(include_statement template: (_) @string)
+(import_statement template: (_) @string)
+(from_statement template: (_) @string)
 
 ; Test expressions
 (test_expression test: (identifier) @function.builtin)
@@ -116,7 +112,6 @@
 
 ; Variables and parameters
 (parameter name: (identifier) @variable.parameter)
-(variable name: (identifier) @variable)
 (caller_args name: (identifier) @variable.parameter)
 (for_open target: (identifier) @variable)
 (for_open target: (unpacking (identifier) @variable))

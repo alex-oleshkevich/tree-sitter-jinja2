@@ -17,9 +17,9 @@ Basic trans
       (statement_end))))
 
 ================================================================================
-Trans with variable
+Trans with variable binding
 ================================================================================
-{% trans name %}Hello {{ name }}{% endtrans %}
+{% trans name=user.name %}Hello {{ name }}{% endtrans %}
 --------------------------------------------------------------------------------
 
 (source_file
@@ -27,8 +27,12 @@ Trans with variable
     (trans_open
       (statement_begin)
       (trans_keyword)
-      (variable
-        name: (identifier))
+      arguments: (trans_arguments
+        (assignment
+          name: (identifier)
+          value: (attribute_access
+            object: (identifier)
+            attribute: (identifier))))
       (statement_end))
     (text)
     (print
@@ -51,9 +55,10 @@ Trans with assignment
     (trans_open
       (statement_begin)
       (trans_keyword)
-      (variable
-        name: (identifier)
-        value: (identifier))
+      arguments: (trans_arguments
+        (assignment
+          name: (identifier)
+          value: (identifier)))
       (statement_end))
     (print
       (print_begin)
@@ -76,9 +81,10 @@ Trans with pluralize
     (trans_open
       (statement_begin)
       (trans_keyword)
-      (variable
-        name: (identifier)
-        value: (identifier))
+      arguments: (trans_arguments
+        (assignment
+          name: (identifier)
+          value: (identifier)))
       (statement_end))
     (text)
     (pluralize_clause
@@ -121,12 +127,13 @@ Trans with multiple variables
     (trans_open
       (statement_begin)
       (trans_keyword)
-      (variable
-        name: (identifier)
-        value: (identifier))
-      (variable
-        name: (identifier)
-        value: (identifier))
+      arguments: (trans_arguments
+        (assignment
+          name: (identifier)
+          value: (identifier))
+        (assignment
+          name: (identifier)
+          value: (identifier)))
       (statement_end))
     (print
       (print_begin)
@@ -137,6 +144,52 @@ Trans with multiple variables
       (print_begin)
       (identifier)
       (print_end))
+    (trans_close
+      (statement_begin)
+      (endtrans_keyword)
+      (statement_end))))
+
+================================================================================
+Trans with context string
+================================================================================
+{% trans "fruit" %}apple{% endtrans %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (trans_statement
+    (trans_open
+      (statement_begin)
+      (trans_keyword)
+      context: (string)
+      (statement_end))
+    (text)
+    (trans_close
+      (statement_begin)
+      (endtrans_keyword)
+      (statement_end))))
+
+================================================================================
+Trans with context string and assignment
+================================================================================
+{% trans "fruit" count=n %}{{ count }} apple{% endtrans %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (trans_statement
+    (trans_open
+      (statement_begin)
+      (trans_keyword)
+      context: (string)
+      arguments: (trans_arguments
+        (assignment
+          name: (identifier)
+          value: (identifier)))
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (text)
     (trans_close
       (statement_begin)
       (endtrans_keyword)
