@@ -266,9 +266,15 @@ module.exports = grammar({
       $.endif_keyword,
       $.statement_end,
     ),
+    _body_node: $ => choice(
+      $.print, $.if_statement, $.for_statement, $.set_statement, $.set_block,
+      $.include_statement, $.call_block, $.with_statement, $.block_statement,
+      $.macro_statement, $.autoescape_statement, $.filter_statement,
+      $.custom_open, $.custom_close, $.comment, $.text,
+    ),
     if_statement: $ => seq(
       $.if_open,
-      repeat(prec.right(choice($.print, $.if_statement, $.for_statement, $.set_statement, $.set_block, $.include_statement, $.custom_open, $.custom_close, $.comment, $.text, $.elif_clause, $.else_clause))),
+      repeat(prec.right(choice($._body_node, $.elif_clause, $.else_clause))),
       $.if_close,
     ),
 
@@ -311,7 +317,7 @@ module.exports = grammar({
     ),
     for_statement: $ => seq(
       $.for_open,
-      repeat(prec.right(choice($.print, $.if_statement, $.for_statement, $.set_statement, $.set_block, $.include_statement, $.custom_open, $.custom_close, $.comment, $.text, $.else_clause))),
+      repeat(prec.right(choice($._body_node, $.else_clause))),
       $.for_close,
     ),
 
@@ -350,7 +356,7 @@ module.exports = grammar({
     ),
     block_statement: $ => seq(
       $.block_open,
-      repeat(prec.right(choice($.print, $.if_statement, $.for_statement, $.set_statement, $.set_block, $.include_statement, $.custom_open, $.custom_close, $.block_statement, $.comment, $.text))),
+      repeat(prec.right($._body_node)),
       $.block_close,
     ),
 
@@ -382,7 +388,7 @@ module.exports = grammar({
     ),
     macro_statement: $ => seq(
       $.macro_open,
-      repeat(prec.right(choice($.print, $.if_statement, $.for_statement, $.set_statement, $.set_block, $.include_statement, $.custom_open, $.custom_close, $.block_statement, $.comment, $.text))),
+      repeat(prec.right($._body_node)),
       $.macro_close,
     ),
 
@@ -431,7 +437,7 @@ module.exports = grammar({
     ),
     set_block: $ => seq(
       $.set_block_open,
-      repeat(prec.right(choice($.print, $.if_statement, $.for_statement, $.set_statement, $.set_block, $.include_statement, $.custom_open, $.custom_close, $.comment, $.text))),
+      repeat(prec.right($._body_node)),
       $.set_block_close,
     ),
 
@@ -469,7 +475,7 @@ module.exports = grammar({
     ),
     call_block: $ => seq(
       $.call_open,
-      repeat(prec.right(choice($.print, $.if_statement, $.for_statement, $.set_statement, $.set_block, $.include_statement, $.custom_open, $.custom_close, $.comment, $.text))),
+      repeat(prec.right($._body_node)),
       $.call_close,
     ),
 
@@ -499,7 +505,7 @@ module.exports = grammar({
     ),
     with_statement: $ => seq(
       $.with_open,
-      repeat(prec.right(choice($.print, $.if_statement, $.for_statement, $.set_statement, $.set_block, $.include_statement, $.custom_open, $.custom_close, $.comment, $.text))),
+      repeat(prec.right($._body_node)),
       $.with_close,
     ),
 
@@ -557,7 +563,7 @@ module.exports = grammar({
     ),
     autoescape_statement: $ => seq(
       $.autoescape_open,
-      repeat(prec.right(choice($.print, $.if_statement, $.for_statement, $.set_statement, $.set_block, $.include_statement, $.custom_open, $.custom_close, $.comment, $.text))),
+      repeat(prec.right($._body_node)),
       $.autoescape_close,
     ),
 
@@ -597,7 +603,7 @@ module.exports = grammar({
     ),
     filter_statement: $ => seq(
       $.filter_open,
-      repeat(prec.right(choice($.print, $.if_statement, $.for_statement, $.set_statement, $.set_block, $.include_statement, $.custom_open, $.custom_close, $.comment, $.text))),
+      repeat(prec.right($._body_node)),
       $.filter_close,
     ),
 

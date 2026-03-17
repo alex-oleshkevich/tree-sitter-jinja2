@@ -216,3 +216,34 @@ If with print inside
       (statement_begin)
       (endif_keyword)
       (statement_end))))
+
+================================================================================
+Macro inside if
+================================================================================
+{% if x %}{% macro greet(name) %}hi{% endmacro %}{% endif %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (if_statement
+    (if_open
+      (statement_begin)
+      (if_keyword)
+      condition: (identifier)
+      (statement_end))
+    (macro_statement
+      (macro_open
+        (statement_begin)
+        (macro_keyword)
+        name: (identifier)
+        (parameter
+          name: (identifier))
+        (statement_end))
+      (text)
+      (macro_close
+        (statement_begin)
+        (endmacro_keyword)
+        (statement_end)))
+    (if_close
+      (statement_begin)
+      (endif_keyword)
+      (statement_end))))

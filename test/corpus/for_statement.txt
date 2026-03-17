@@ -305,3 +305,37 @@ Empty for body
       (statement_begin)
       (endfor_keyword)
       (statement_end))))
+
+================================================================================
+Block inside for
+================================================================================
+{% for x in items %}{% block item %}{{ x }}{% endblock %}{% endfor %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (for_statement
+    (for_open
+      (statement_begin)
+      (for_keyword)
+      target: (identifier)
+      (in_keyword)
+      iterable: (identifier)
+      (statement_end))
+    (block_statement
+      (block_open
+        (statement_begin)
+        (block_keyword)
+        name: (identifier)
+        (statement_end))
+      (print
+        (print_begin)
+        (identifier)
+        (print_end))
+      (block_close
+        (statement_begin)
+        (endblock_keyword)
+        (statement_end)))
+    (for_close
+      (statement_begin)
+      (endfor_keyword)
+      (statement_end))))

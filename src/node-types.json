@@ -321,6 +321,18 @@
           "named": true
         },
         {
+          "type": "autoescape_statement",
+          "named": true
+        },
+        {
+          "type": "block_statement",
+          "named": true
+        },
+        {
+          "type": "call_block",
+          "named": true
+        },
+        {
           "type": "comment",
           "named": true
         },
@@ -333,6 +345,10 @@
           "named": true
         },
         {
+          "type": "filter_statement",
+          "named": true
+        },
+        {
           "type": "for_statement",
           "named": true
         },
@@ -342,6 +358,10 @@
         },
         {
           "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "macro_statement",
           "named": true
         },
         {
@@ -358,6 +378,10 @@
         },
         {
           "type": "text",
+          "named": true
+        },
+        {
+          "type": "with_statement",
           "named": true
         }
       ]
@@ -688,6 +712,10 @@
       "required": true,
       "types": [
         {
+          "type": "autoescape_statement",
+          "named": true
+        },
+        {
           "type": "block_close",
           "named": true
         },
@@ -697,6 +725,10 @@
         },
         {
           "type": "block_statement",
+          "named": true
+        },
+        {
+          "type": "call_block",
           "named": true
         },
         {
@@ -712,6 +744,10 @@
           "named": true
         },
         {
+          "type": "filter_statement",
+          "named": true
+        },
+        {
           "type": "for_statement",
           "named": true
         },
@@ -721,6 +757,10 @@
         },
         {
           "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "macro_statement",
           "named": true
         },
         {
@@ -738,6 +778,10 @@
         {
           "type": "text",
           "named": true
+        },
+        {
+          "type": "with_statement",
+          "named": true
         }
       ]
     }
@@ -750,6 +794,18 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "autoescape_statement",
+          "named": true
+        },
+        {
+          "type": "block_statement",
+          "named": true
+        },
+        {
+          "type": "call_block",
+          "named": true
+        },
         {
           "type": "call_close",
           "named": true
@@ -771,6 +827,10 @@
           "named": true
         },
         {
+          "type": "filter_statement",
+          "named": true
+        },
+        {
           "type": "for_statement",
           "named": true
         },
@@ -780,6 +840,10 @@
         },
         {
           "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "macro_statement",
           "named": true
         },
         {
@@ -796,6 +860,10 @@
         },
         {
           "type": "text",
+          "named": true
+        },
+        {
+          "type": "with_statement",
           "named": true
         }
       ]
@@ -1673,6 +1741,18 @@
       "required": true,
       "types": [
         {
+          "type": "autoescape_statement",
+          "named": true
+        },
+        {
+          "type": "block_statement",
+          "named": true
+        },
+        {
+          "type": "call_block",
+          "named": true
+        },
+        {
           "type": "comment",
           "named": true
         },
@@ -1693,6 +1773,10 @@
           "named": true
         },
         {
+          "type": "filter_statement",
+          "named": true
+        },
+        {
           "type": "for_statement",
           "named": true
         },
@@ -1702,6 +1786,10 @@
         },
         {
           "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "macro_statement",
           "named": true
         },
         {
@@ -1718,6 +1806,10 @@
         },
         {
           "type": "text",
+          "named": true
+        },
+        {
+          "type": "with_statement",
           "named": true
         }
       ]
@@ -1977,6 +2069,18 @@
       "required": true,
       "types": [
         {
+          "type": "autoescape_statement",
+          "named": true
+        },
+        {
+          "type": "block_statement",
+          "named": true
+        },
+        {
+          "type": "call_block",
+          "named": true
+        },
+        {
           "type": "comment",
           "named": true
         },
@@ -1990,6 +2094,10 @@
         },
         {
           "type": "else_clause",
+          "named": true
+        },
+        {
+          "type": "filter_statement",
           "named": true
         },
         {
@@ -2013,6 +2121,10 @@
           "named": true
         },
         {
+          "type": "macro_statement",
+          "named": true
+        },
+        {
           "type": "print",
           "named": true
         },
@@ -2026,6 +2138,10 @@
         },
         {
           "type": "text",
+          "named": true
+        },
+        {
+          "type": "with_statement",
           "named": true
         }
       ]
@@ -2391,6 +2507,18 @@
       "required": true,
       "types": [
         {
+          "type": "autoescape_statement",
+          "named": true
+        },
+        {
+          "type": "block_statement",
+          "named": true
+        },
+        {
+          "type": "call_block",
+          "named": true
+        },
+        {
           "type": "comment",
           "named": true
         },
@@ -2408,6 +2536,10 @@
         },
         {
           "type": "else_clause",
+          "named": true
+        },
+        {
+          "type": "filter_statement",
           "named": true
         },
         {
@@ -2431,6 +2563,10 @@
           "named": true
         },
         {
+          "type": "macro_statement",
+          "named": true
+        },
+        {
           "type": "print",
           "named": true
         },
@@ -2444,6 +2580,10 @@
         },
         {
           "type": "text",
+          "named": true
+        },
+        {
+          "type": "with_statement",
           "named": true
         }
       ]
@@ -3000,7 +3140,15 @@
       "required": true,
       "types": [
         {
+          "type": "autoescape_statement",
+          "named": true
+        },
+        {
           "type": "block_statement",
+          "named": true
+        },
+        {
+          "type": "call_block",
           "named": true
         },
         {
@@ -3013,6 +3161,10 @@
         },
         {
           "type": "custom_open",
+          "named": true
+        },
+        {
+          "type": "filter_statement",
           "named": true
         },
         {
@@ -3036,6 +3188,10 @@
           "named": true
         },
         {
+          "type": "macro_statement",
+          "named": true
+        },
+        {
           "type": "print",
           "named": true
         },
@@ -3049,6 +3205,10 @@
         },
         {
           "type": "text",
+          "named": true
+        },
+        {
+          "type": "with_statement",
           "named": true
         }
       ]
@@ -3747,6 +3907,18 @@
       "required": true,
       "types": [
         {
+          "type": "autoescape_statement",
+          "named": true
+        },
+        {
+          "type": "block_statement",
+          "named": true
+        },
+        {
+          "type": "call_block",
+          "named": true
+        },
+        {
           "type": "comment",
           "named": true
         },
@@ -3759,6 +3931,10 @@
           "named": true
         },
         {
+          "type": "filter_statement",
+          "named": true
+        },
+        {
           "type": "for_statement",
           "named": true
         },
@@ -3768,6 +3944,10 @@
         },
         {
           "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "macro_statement",
           "named": true
         },
         {
@@ -3792,6 +3972,10 @@
         },
         {
           "type": "text",
+          "named": true
+        },
+        {
+          "type": "with_statement",
           "named": true
         }
       ]
@@ -5232,6 +5416,18 @@
       "required": true,
       "types": [
         {
+          "type": "autoescape_statement",
+          "named": true
+        },
+        {
+          "type": "block_statement",
+          "named": true
+        },
+        {
+          "type": "call_block",
+          "named": true
+        },
+        {
           "type": "comment",
           "named": true
         },
@@ -5244,6 +5440,10 @@
           "named": true
         },
         {
+          "type": "filter_statement",
+          "named": true
+        },
+        {
           "type": "for_statement",
           "named": true
         },
@@ -5253,6 +5453,10 @@
         },
         {
           "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "macro_statement",
           "named": true
         },
         {
@@ -5277,6 +5481,10 @@
         },
         {
           "type": "with_open",
+          "named": true
+        },
+        {
+          "type": "with_statement",
           "named": true
         }
       ]
