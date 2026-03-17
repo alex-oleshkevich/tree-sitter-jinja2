@@ -41,9 +41,10 @@
   (debug_keyword)
   (filter_keyword)
   (endfilter_keyword)
-  (is_keyword)
-  (not_keyword)
 ] @keyword
+
+(is_keyword) @keyword.operator
+(not_keyword) @keyword.operator
 
 ; Operators
 (binary_expression operator: _ @operator)
@@ -120,6 +121,7 @@
 
 ; Keyword arguments
 (keyword_argument name: (identifier) @variable.parameter)
+(keyword_argument "=" @operator)
 
 ; Attribute access
 (attribute_access attribute: (identifier) @property)

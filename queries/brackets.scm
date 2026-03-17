@@ -1,3 +1,13 @@
 ((statement_begin) @open (statement_end) @close)
 ((print_begin) @open (print_end) @close)
 ((comment_begin) @open (comment_end) @close)
+
+(parenthesized_expression "(" @open ")" @close)
+(tuple "(" @open ")" @close)
+(list "[" @open "]" @close)
+(dict "{" @open "}" @close)
+(subscript "[" @open "]" @close)
+(function_call "(" @open ")" @close)
+(method_call "(" @open ")" @close)
+(caller_args "(" @open ")" @close)
+(macro_statement "(" @open ")" @close)
