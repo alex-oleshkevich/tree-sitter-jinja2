@@ -337,11 +337,7 @@
           "named": true
         },
         {
-          "type": "custom_close",
-          "named": true
-        },
-        {
-          "type": "custom_open",
+          "type": "custom_statement",
           "named": true
         },
         {
@@ -760,11 +756,7 @@
           "named": true
         },
         {
-          "type": "custom_close",
-          "named": true
-        },
-        {
-          "type": "custom_open",
+          "type": "custom_statement",
           "named": true
         },
         {
@@ -867,11 +859,7 @@
           "named": true
         },
         {
-          "type": "custom_close",
-          "named": true
-        },
-        {
-          "type": "custom_open",
+          "type": "custom_statement",
           "named": true
         },
         {
@@ -1189,6 +1177,109 @@
         },
         {
           "type": "statement_end",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "custom_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "autoescape_statement",
+          "named": true
+        },
+        {
+          "type": "block_statement",
+          "named": true
+        },
+        {
+          "type": "call_block",
+          "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "custom_close",
+          "named": true
+        },
+        {
+          "type": "custom_open",
+          "named": true
+        },
+        {
+          "type": "custom_statement",
+          "named": true
+        },
+        {
+          "type": "debug_statement",
+          "named": true
+        },
+        {
+          "type": "do_statement",
+          "named": true
+        },
+        {
+          "type": "filter_statement",
+          "named": true
+        },
+        {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "from_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "import_statement",
+          "named": true
+        },
+        {
+          "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "macro_statement",
+          "named": true
+        },
+        {
+          "type": "print",
+          "named": true
+        },
+        {
+          "type": "raw_statement",
+          "named": true
+        },
+        {
+          "type": "set_block",
+          "named": true
+        },
+        {
+          "type": "set_statement",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        },
+        {
+          "type": "trans_statement",
+          "named": true
+        },
+        {
+          "type": "with_statement",
           "named": true
         }
       ]
@@ -1829,11 +1920,7 @@
           "named": true
         },
         {
-          "type": "custom_close",
-          "named": true
-        },
-        {
-          "type": "custom_open",
+          "type": "custom_statement",
           "named": true
         },
         {
@@ -2181,11 +2268,7 @@
           "named": true
         },
         {
-          "type": "custom_close",
-          "named": true
-        },
-        {
-          "type": "custom_open",
+          "type": "custom_statement",
           "named": true
         },
         {
@@ -2643,11 +2726,7 @@
           "named": true
         },
         {
-          "type": "custom_close",
-          "named": true
-        },
-        {
-          "type": "custom_open",
+          "type": "custom_statement",
           "named": true
         },
         {
@@ -3300,11 +3379,7 @@
           "named": true
         },
         {
-          "type": "custom_close",
-          "named": true
-        },
-        {
-          "type": "custom_open",
+          "type": "custom_statement",
           "named": true
         },
         {
@@ -4102,11 +4177,7 @@
           "named": true
         },
         {
-          "type": "custom_close",
-          "named": true
-        },
-        {
-          "type": "custom_open",
+          "type": "custom_statement",
           "named": true
         },
         {
@@ -4544,11 +4615,7 @@
           "named": true
         },
         {
-          "type": "custom_close",
-          "named": true
-        },
-        {
-          "type": "custom_open",
+          "type": "custom_statement",
           "named": true
         },
         {
@@ -5591,11 +5658,7 @@
           "named": true
         },
         {
-          "type": "custom_close",
-          "named": true
-        },
-        {
-          "type": "custom_open",
+          "type": "custom_statement",
           "named": true
         },
         {

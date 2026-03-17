@@ -21,7 +21,7 @@ module.exports = grammar({
   ],
   rules: {
     source_file: $ => repeat($._node),
-    _node: $ => choice($.print, $.if_statement, $.for_statement, $.extends_statement, $.include_statement, $.import_statement, $.from_statement, $.set_statement, $.set_block, $.call_block, $.with_statement, $.trans_statement, $.do_statement, $.autoescape_statement, $.raw_statement, $.debug_statement, $.filter_statement, $.block_statement, $.macro_statement, $.custom_close, $.custom_open, $.comment, $.text),
+    _node: $ => choice($.print, $.if_statement, $.for_statement, $.extends_statement, $.include_statement, $.import_statement, $.from_statement, $.set_statement, $.set_block, $.call_block, $.with_statement, $.trans_statement, $.do_statement, $.autoescape_statement, $.raw_statement, $.debug_statement, $.filter_statement, $.block_statement, $.macro_statement, $.custom_statement, $.comment, $.text),
     _whitespace: $ => /\s+/,
     statement_begin: $ => token(choice('{%', '{%-')),
     statement_end: $ => token(choice('%}', '-%}')),
@@ -273,7 +273,7 @@ module.exports = grammar({
       $.call_block, $.with_statement, $.block_statement,
       $.macro_statement, $.trans_statement, $.autoescape_statement,
       $.raw_statement, $.do_statement, $.debug_statement, $.filter_statement,
-      $.custom_open, $.custom_close, $.comment, $.text,
+      $.custom_statement, $.comment, $.text,
     ),
     if_statement: $ => seq(
       $.if_open,
@@ -623,6 +623,11 @@ module.exports = grammar({
     _custom_argument: $ => choice(
       $.keyword_argument,
       $._expression,
+    ),
+    custom_statement: $ => seq(
+      $.custom_open,
+      repeat(prec.right($._body_node)),
+      $.custom_close,
     ),
     custom_open: $ => prec(-2, seq(
       $.statement_begin,

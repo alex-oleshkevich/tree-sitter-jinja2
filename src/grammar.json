@@ -90,11 +90,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "custom_close"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "custom_open"
+          "name": "custom_statement"
         },
         {
           "type": "SYMBOL",
@@ -2372,11 +2368,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "custom_open"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "custom_close"
+          "name": "custom_statement"
         },
         {
           "type": "SYMBOL",
@@ -4267,6 +4259,30 @@
         {
           "type": "SYMBOL",
           "name": "_expression"
+        }
+      ]
+    },
+    "custom_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "custom_open"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "PREC_RIGHT",
+            "value": 0,
+            "content": {
+              "type": "SYMBOL",
+              "name": "_body_node"
+            }
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "custom_close"
         }
       ]
     },

@@ -1,118 +1,85 @@
 ================================================================================
-Simple custom tag
-================================================================================
-{% cache %}
---------------------------------------------------------------------------------
-
-(source_file
-  (custom_open
-    (statement_begin)
-    name: (identifier)
-    (statement_end)))
-
-================================================================================
-Custom tag with argument
-================================================================================
-{% cache "key" %}
---------------------------------------------------------------------------------
-
-(source_file
-  (custom_open
-    (statement_begin)
-    name: (identifier)
-    argument: (string)
-    (statement_end)))
-
-================================================================================
-Custom tag with multiple arguments
-================================================================================
-{% cache "key" 300 %}
---------------------------------------------------------------------------------
-
-(source_file
-  (custom_open
-    (statement_begin)
-    name: (identifier)
-    argument: (string)
-    argument: (number)
-    (statement_end)))
-
-================================================================================
-Custom end tag
-================================================================================
-{% endcache %}
---------------------------------------------------------------------------------
-
-(source_file
-  (custom_close
-    (statement_begin)
-    name: (identifier)
-    (statement_end)))
-
-================================================================================
 Custom block pair
 ================================================================================
 {% cache "key" %}content{% endcache %}
 --------------------------------------------------------------------------------
 
 (source_file
-  (custom_open
-    (statement_begin)
-    name: (identifier)
-    argument: (string)
-    (statement_end))
-  (text)
-  (custom_close
-    (statement_begin)
-    name: (identifier)
-    (statement_end)))
+  (custom_statement
+    (custom_open
+      (statement_begin)
+      name: (identifier)
+      argument: (string)
+      (statement_end))
+    (text)
+    (custom_close
+      (statement_begin)
+      name: (identifier)
+      (statement_end))))
 
 ================================================================================
-Custom tag with expression argument
+Custom block no arguments
 ================================================================================
-{% cache key_var %}
+{% myblock %}content{% endmyblock %}
 --------------------------------------------------------------------------------
 
 (source_file
-  (custom_open
-    (statement_begin)
-    name: (identifier)
-    argument: (identifier)
-    (statement_end)))
+  (custom_statement
+    (custom_open
+      (statement_begin)
+      name: (identifier)
+      (statement_end))
+    (text)
+    (custom_close
+      (statement_begin)
+      name: (identifier)
+      (statement_end))))
 
 ================================================================================
-Custom tag with keyword argument
+Custom block with keyword arguments
 ================================================================================
-{% cache key="mykey" timeout=300 %}
+{% cache key="mykey" timeout=300 %}content{% endcache %}
 --------------------------------------------------------------------------------
 
 (source_file
-  (custom_open
-    (statement_begin)
-    name: (identifier)
-    argument: (keyword_argument
+  (custom_statement
+    (custom_open
+      (statement_begin)
       name: (identifier)
-      value: (string))
-    argument: (keyword_argument
+      argument: (keyword_argument
+        name: (identifier)
+        value: (string))
+      argument: (keyword_argument
+        name: (identifier)
+        value: (number))
+      (statement_end))
+    (text)
+    (custom_close
+      (statement_begin)
       name: (identifier)
-      value: (number))
-    (statement_end)))
+      (statement_end))))
 
 ================================================================================
-Custom tag with mixed arguments
+Custom block with mixed arguments
 ================================================================================
-{% cache "prefix" timeout=300 %}
+{% cache "prefix" timeout=300 %}content{% endcache %}
 --------------------------------------------------------------------------------
 
 (source_file
-  (custom_open
-    (statement_begin)
-    name: (identifier)
-    argument: (string)
-    argument: (keyword_argument
+  (custom_statement
+    (custom_open
+      (statement_begin)
       name: (identifier)
-      value: (number))
-    (statement_end)))
+      argument: (string)
+      argument: (keyword_argument
+        name: (identifier)
+        value: (number))
+      (statement_end))
+    (text)
+    (custom_close
+      (statement_begin)
+      name: (identifier)
+      (statement_end))))
 
 ================================================================================
 Custom block with if inside
@@ -121,29 +88,30 @@ Custom block with if inside
 --------------------------------------------------------------------------------
 
 (source_file
-  (custom_open
-    (statement_begin)
-    name: (identifier)
-    argument: (string)
-    (statement_end))
-  (if_statement
-    (if_open
+  (custom_statement
+    (custom_open
       (statement_begin)
-      (if_keyword)
-      condition: (identifier)
+      name: (identifier)
+      argument: (string)
       (statement_end))
-    (print
-      (print_begin)
-      (identifier)
-      (print_end))
-    (if_close
+    (if_statement
+      (if_open
+        (statement_begin)
+        (if_keyword)
+        condition: (identifier)
+        (statement_end))
+      (print
+        (print_begin)
+        (identifier)
+        (print_end))
+      (if_close
+        (statement_begin)
+        (endif_keyword)
+        (statement_end)))
+    (custom_close
       (statement_begin)
-      (endif_keyword)
-      (statement_end)))
-  (custom_close
-    (statement_begin)
-    name: (identifier)
-    (statement_end)))
+      name: (identifier)
+      (statement_end))))
 
 ================================================================================
 Custom block with for inside
@@ -152,31 +120,32 @@ Custom block with for inside
 --------------------------------------------------------------------------------
 
 (source_file
-  (custom_open
-    (statement_begin)
-    name: (identifier)
-    argument: (string)
-    (statement_end))
-  (for_statement
-    (for_open
+  (custom_statement
+    (custom_open
       (statement_begin)
-      (for_keyword)
-      target: (identifier)
-      (in_keyword)
-      iterable: (identifier)
+      name: (identifier)
+      argument: (string)
       (statement_end))
-    (print
-      (print_begin)
-      (identifier)
-      (print_end))
-    (for_close
+    (for_statement
+      (for_open
+        (statement_begin)
+        (for_keyword)
+        target: (identifier)
+        (in_keyword)
+        iterable: (identifier)
+        (statement_end))
+      (print
+        (print_begin)
+        (identifier)
+        (print_end))
+      (for_close
+        (statement_begin)
+        (endfor_keyword)
+        (statement_end)))
+    (custom_close
       (statement_begin)
-      (endfor_keyword)
-      (statement_end)))
-  (custom_close
-    (statement_begin)
-    name: (identifier)
-    (statement_end)))
+      name: (identifier)
+      (statement_end))))
 
 ================================================================================
 Nested custom blocks
@@ -185,25 +154,27 @@ Nested custom blocks
 --------------------------------------------------------------------------------
 
 (source_file
-  (custom_open
-    (statement_begin)
-    name: (identifier)
-    argument: (string)
-    (statement_end))
-  (custom_open
-    (statement_begin)
-    name: (identifier)
-    argument: (string)
-    (statement_end))
-  (text)
-  (custom_close
-    (statement_begin)
-    name: (identifier)
-    (statement_end))
-  (custom_close
-    (statement_begin)
-    name: (identifier)
-    (statement_end)))
+  (custom_statement
+    (custom_open
+      (statement_begin)
+      name: (identifier)
+      argument: (string)
+      (statement_end))
+    (custom_statement
+      (custom_open
+        (statement_begin)
+        name: (identifier)
+        argument: (string)
+        (statement_end))
+      (text)
+      (custom_close
+        (statement_begin)
+        name: (identifier)
+        (statement_end)))
+    (custom_close
+      (statement_begin)
+      name: (identifier)
+      (statement_end))))
 
 ================================================================================
 Custom block with macro inside
@@ -212,31 +183,32 @@ Custom block with macro inside
 --------------------------------------------------------------------------------
 
 (source_file
-  (custom_open
-    (statement_begin)
-    name: (identifier)
-    (statement_end))
-  (macro_statement
-    (macro_open
+  (custom_statement
+    (custom_open
       (statement_begin)
-      (macro_keyword)
       name: (identifier)
-      (parameter
-        name: (identifier))
       (statement_end))
-    (text)
-    (print
-      (print_begin)
-      (identifier)
-      (print_end))
-    (macro_close
+    (macro_statement
+      (macro_open
+        (statement_begin)
+        (macro_keyword)
+        name: (identifier)
+        (parameter
+          name: (identifier))
+        (statement_end))
+      (text)
+      (print
+        (print_begin)
+        (identifier)
+        (print_end))
+      (macro_close
+        (statement_begin)
+        (endmacro_keyword)
+        (statement_end)))
+    (custom_close
       (statement_begin)
-      (endmacro_keyword)
-      (statement_end)))
-  (custom_close
-    (statement_begin)
-    name: (identifier)
-    (statement_end)))
+      name: (identifier)
+      (statement_end))))
 
 ================================================================================
 Custom block with call inside
@@ -245,50 +217,70 @@ Custom block with call inside
 --------------------------------------------------------------------------------
 
 (source_file
-  (custom_open
-    (statement_begin)
-    name: (identifier)
-    (statement_end))
-  (call_block
-    (call_open
+  (custom_statement
+    (custom_open
       (statement_begin)
-      (call_keyword)
-      call: (function_call
-        name: (identifier))
+      name: (identifier)
       (statement_end))
-    (text)
-    (call_close
+    (call_block
+      (call_open
+        (statement_begin)
+        (call_keyword)
+        call: (function_call
+          name: (identifier))
+        (statement_end))
+      (text)
+      (call_close
+        (statement_begin)
+        (endcall_keyword)
+        (statement_end)))
+    (custom_close
       (statement_begin)
-      (endcall_keyword)
-      (statement_end)))
-  (custom_close
-    (statement_begin)
-    name: (identifier)
-    (statement_end)))
+      name: (identifier)
+      (statement_end))))
 
 ================================================================================
-Multiple different custom tags
+Multiple different custom blocks
 ================================================================================
 {% cache "a" %}x{% endcache %}{% markdown %}text{% endmarkdown %}
 --------------------------------------------------------------------------------
 
 (source_file
-  (custom_open
-    (statement_begin)
-    name: (identifier)
-    argument: (string)
-    (statement_end))
-  (text)
-  (custom_close
-    (statement_begin)
-    name: (identifier)
-    (statement_end))
-  (custom_open
-    (statement_begin)
-    name: (identifier)
-    (statement_end))
-  (text)
-  (custom_close
-    (statement_begin)
-    name: (identifier)
-    (statement_end)))
+  (custom_statement
+    (custom_open
+      (statement_begin)
+      name: (identifier)
+      argument: (string)
+      (statement_end))
+    (text)
+    (custom_close
+      (statement_begin)
+      name: (identifier)
+      (statement_end)))
+  (custom_statement
+    (custom_open
+      (statement_begin)
+      name: (identifier)
+      (statement_end))
+    (text)
+    (custom_close
+      (statement_begin)
+      name: (identifier)
+      (statement_end))))
+
+================================================================================
+Empty custom block
+================================================================================
+{% myblock %}{% endmyblock %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (custom_statement
+    (custom_open
+      (statement_begin)
+      name: (identifier)
+      (statement_end))
+    (custom_close
+      (statement_begin)
+      name: (identifier)
+      (statement_end))))

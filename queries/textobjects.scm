@@ -36,6 +36,10 @@
 (filter_statement) @block.outer
 (set_block) @block.outer
 
+(custom_statement) @block.outer
+(custom_statement
+  (custom_open) . (_)* . (custom_close)) @block.inner
+
 ; Comments
 (comment) @comment.outer
 (comment_content) @comment.inner
