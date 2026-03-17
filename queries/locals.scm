@@ -21,13 +21,15 @@
 (with_statement) @local.scope
 
 (with_open
-  (assignment
-    name: (identifier) @local.definition.variable))
+  (with_arguments
+    (assignment
+      name: (identifier) @local.definition.variable)))
 
 (with_open
-  (assignment
-    name: (unpacking
-      (identifier) @local.definition.variable)))
+  (with_arguments
+    (assignment
+      name: (unpacking
+        (identifier) @local.definition.variable))))
 
 ; Call block creates scope for caller args
 (call_block) @local.scope

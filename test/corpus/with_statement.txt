@@ -9,9 +9,10 @@ Basic with
     (with_open
       (statement_begin)
       (with_keyword)
-      (assignment
-        name: (identifier)
-        value: (number))
+      arguments: (with_arguments
+        (assignment
+          name: (identifier)
+          value: (number)))
       (statement_end))
     (print
       (print_begin)
@@ -33,12 +34,13 @@ With multiple assignments
     (with_open
       (statement_begin)
       (with_keyword)
-      (assignment
-        name: (identifier)
-        value: (number))
-      (assignment
-        name: (identifier)
-        value: (number))
+      arguments: (with_arguments
+        (assignment
+          name: (identifier)
+          value: (number))
+        (assignment
+          name: (identifier)
+          value: (number)))
       (statement_end))
     (print
       (print_begin)
@@ -81,11 +83,12 @@ With expression value
     (with_open
       (statement_begin)
       (with_keyword)
-      (assignment
-        name: (identifier)
-        value: (binary_expression
-          left: (identifier)
-          right: (identifier)))
+      arguments: (with_arguments
+        (assignment
+          name: (identifier)
+          value: (binary_expression
+            left: (identifier)
+            right: (identifier))))
       (statement_end))
     (print
       (print_begin)

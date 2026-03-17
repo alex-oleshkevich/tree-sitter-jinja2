@@ -493,13 +493,14 @@ module.exports = grammar({
       '=',
       field('value', $._expression),
     ),
+    with_arguments: $ => seq(
+      $.assignment,
+      repeat(seq(',', $.assignment)),
+    ),
     with_open: $ => seq(
       $.statement_begin,
       $.with_keyword,
-      optional(seq(
-        $.assignment,
-        repeat(seq(',', $.assignment)),
-      )),
+      optional(field('arguments', $.with_arguments)),
       $.statement_end,
     ),
     with_close: $ => seq(

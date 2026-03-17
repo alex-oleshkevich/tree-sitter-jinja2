@@ -50,15 +50,17 @@
 (with_statement
   (with_open
     (with_keyword) @context
-    (assignment
-      name: (identifier) @name))) @item
+    (with_arguments
+      (assignment
+        name: (identifier) @name)))) @item
 
 (with_statement
   (with_open
     (with_keyword) @context
-    (assignment
-      name: (unpacking
-        (identifier) @name)))) @item
+    (with_arguments
+      (assignment
+        name: (unpacking
+          (identifier) @name))))) @item
 
 (for_statement
   (for_open
