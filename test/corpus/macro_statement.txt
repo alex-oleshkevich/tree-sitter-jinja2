@@ -200,3 +200,71 @@ Macro with for inside
       (statement_begin)
       (endmacro_keyword)
       (statement_end))))
+
+================================================================================
+Macro with varargs
+================================================================================
+{% macro render(name, *args) %}{% endmacro %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (macro_statement
+    (macro_open
+      (statement_begin)
+      (macro_keyword)
+      name: (identifier)
+      (parameter
+        name: (identifier))
+      (parameter
+        name: (identifier))
+      (statement_end))
+    (macro_close
+      (statement_begin)
+      (endmacro_keyword)
+      (statement_end))))
+
+================================================================================
+Macro with kwargs
+================================================================================
+{% macro render(name, **kwargs) %}{% endmacro %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (macro_statement
+    (macro_open
+      (statement_begin)
+      (macro_keyword)
+      name: (identifier)
+      (parameter
+        name: (identifier))
+      (parameter
+        name: (identifier))
+      (statement_end))
+    (macro_close
+      (statement_begin)
+      (endmacro_keyword)
+      (statement_end))))
+
+================================================================================
+Macro with varargs and kwargs
+================================================================================
+{% macro render(name, *args, **kwargs) %}{% endmacro %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (macro_statement
+    (macro_open
+      (statement_begin)
+      (macro_keyword)
+      name: (identifier)
+      (parameter
+        name: (identifier))
+      (parameter
+        name: (identifier))
+      (parameter
+        name: (identifier))
+      (statement_end))
+    (macro_close
+      (statement_begin)
+      (endmacro_keyword)
+      (statement_end))))

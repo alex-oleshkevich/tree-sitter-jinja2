@@ -369,9 +369,10 @@ module.exports = grammar({
       $.block_close,
     ),
 
-    parameter: $ => seq(
-      field('name', $.identifier),
-      optional(seq('=', field('default', $._expression))),
+    parameter: $ => choice(
+      seq(field('name', $.identifier), optional(seq('=', field('default', $._expression)))),
+      seq('*', field('name', $.identifier)),
+      seq('**', field('name', $.identifier)),
     ),
     _parameter_list: $ => seq(
       '(',
