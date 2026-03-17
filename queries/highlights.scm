@@ -50,7 +50,6 @@
 (unary_expression operator: _ @operator)
 
 "|" @operator
-"~" @operator
 
 ; Punctuation - Delimiters
 (statement_begin) @punctuation.bracket
@@ -83,11 +82,12 @@
 
 ; Functions and methods
 (function_call name: (identifier) @function.call)
+(function_call name: (function_call name: (identifier) @function.call))
 (method_call method: (identifier) @function.method.call)
 
 ; Macro definitions
 (macro_open name: (identifier) @function)
-(macro_close name: (identifier) @function)
+(macro_close name: (identifier) @function.call)
 
 ; Block names
 (block_open name: (identifier) @label)
@@ -110,11 +110,10 @@
 (for_open target: (identifier) @variable)
 (for_open target: (unpacking (identifier) @variable))
 
-; Assignment targets
+; Definition and binding targets
+(set_block_open target: (identifier) @variable)
 (assignment name: (identifier) @variable)
 (assignment name: (unpacking (identifier) @variable))
-
-; Import names
 (import_name name: (identifier) @variable)
 (import_name alias: (identifier) @variable)
 (import_statement alias: (identifier) @variable)
@@ -133,8 +132,8 @@
 (pair key: (identifier) @property)
 
 ; Custom tags
-(custom_open name: (identifier) @keyword)
-(custom_close name: (identifier) @keyword)
+(custom_open name: (identifier) @tag)
+(custom_close name: (identifier) @tag)
 (custom_open argument: (keyword_argument name: (identifier) @variable.parameter))
 (custom_open argument: (identifier) @variable)
 

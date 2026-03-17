@@ -35,19 +35,22 @@
 (caller_args
   name: (identifier) @local.definition.parameter)
 
-; Set statement defines variables (in current scope)
+; Set statement defines variables (leaks into enclosing scope)
 (set_statement
   (assignment
-    name: (identifier) @local.definition.variable))
+    name: (identifier) @local.definition.variable)
+  (#set! definition.variable.scope "parent"))
 
 (set_statement
   (assignment
     name: (unpacking
-      (identifier) @local.definition.variable)))
+      (identifier) @local.definition.variable))
+  (#set! definition.variable.scope "parent"))
 
-; Set block defines variable
+; Set block defines variable (leaks into enclosing scope)
 (set_block_open
-  target: (identifier) @local.definition.variable)
+  target: (identifier) @local.definition.variable
+  (#set! definition.variable.scope "parent"))
 
 ; Trans variables
 (trans_open
