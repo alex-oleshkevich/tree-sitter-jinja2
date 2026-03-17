@@ -2324,6 +2324,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "import_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "from_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "call_block"
         },
         {
@@ -2340,7 +2348,23 @@
         },
         {
           "type": "SYMBOL",
+          "name": "trans_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "autoescape_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "raw_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "do_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "debug_statement"
         },
         {
           "type": "SYMBOL",
@@ -2613,19 +2637,38 @@
             "type": "PREC_RIGHT",
             "value": 0,
             "content": {
-              "type": "CHOICE",
+              "type": "SYMBOL",
+              "name": "_body_node"
+            }
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "_body_node"
+                  "name": "else_clause"
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "else_clause"
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "PREC_RIGHT",
+                    "value": 0,
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_body_node"
+                    }
+                  }
                 }
               ]
+            },
+            {
+              "type": "BLANK"
             }
-          }
+          ]
         },
         {
           "type": "SYMBOL",

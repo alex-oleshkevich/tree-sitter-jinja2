@@ -345,6 +345,14 @@
           "named": true
         },
         {
+          "type": "debug_statement",
+          "named": true
+        },
+        {
+          "type": "do_statement",
+          "named": true
+        },
+        {
           "type": "filter_statement",
           "named": true
         },
@@ -353,7 +361,15 @@
           "named": true
         },
         {
+          "type": "from_statement",
+          "named": true
+        },
+        {
           "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "import_statement",
           "named": true
         },
         {
@@ -369,6 +385,10 @@
           "named": true
         },
         {
+          "type": "raw_statement",
+          "named": true
+        },
+        {
           "type": "set_block",
           "named": true
         },
@@ -378,6 +398,10 @@
         },
         {
           "type": "text",
+          "named": true
+        },
+        {
+          "type": "trans_statement",
           "named": true
         },
         {
@@ -744,6 +768,14 @@
           "named": true
         },
         {
+          "type": "debug_statement",
+          "named": true
+        },
+        {
+          "type": "do_statement",
+          "named": true
+        },
+        {
           "type": "filter_statement",
           "named": true
         },
@@ -752,7 +784,15 @@
           "named": true
         },
         {
+          "type": "from_statement",
+          "named": true
+        },
+        {
           "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "import_statement",
           "named": true
         },
         {
@@ -768,6 +808,10 @@
           "named": true
         },
         {
+          "type": "raw_statement",
+          "named": true
+        },
+        {
           "type": "set_block",
           "named": true
         },
@@ -777,6 +821,10 @@
         },
         {
           "type": "text",
+          "named": true
+        },
+        {
+          "type": "trans_statement",
           "named": true
         },
         {
@@ -827,6 +875,14 @@
           "named": true
         },
         {
+          "type": "debug_statement",
+          "named": true
+        },
+        {
+          "type": "do_statement",
+          "named": true
+        },
+        {
           "type": "filter_statement",
           "named": true
         },
@@ -835,7 +891,15 @@
           "named": true
         },
         {
+          "type": "from_statement",
+          "named": true
+        },
+        {
           "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "import_statement",
           "named": true
         },
         {
@@ -851,6 +915,10 @@
           "named": true
         },
         {
+          "type": "raw_statement",
+          "named": true
+        },
+        {
           "type": "set_block",
           "named": true
         },
@@ -860,6 +928,10 @@
         },
         {
           "type": "text",
+          "named": true
+        },
+        {
+          "type": "trans_statement",
           "named": true
         },
         {
@@ -1765,6 +1837,14 @@
           "named": true
         },
         {
+          "type": "debug_statement",
+          "named": true
+        },
+        {
+          "type": "do_statement",
+          "named": true
+        },
+        {
           "type": "filter_close",
           "named": true
         },
@@ -1781,7 +1861,15 @@
           "named": true
         },
         {
+          "type": "from_statement",
+          "named": true
+        },
+        {
           "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "import_statement",
           "named": true
         },
         {
@@ -1797,6 +1885,10 @@
           "named": true
         },
         {
+          "type": "raw_statement",
+          "named": true
+        },
+        {
           "type": "set_block",
           "named": true
         },
@@ -1806,6 +1898,10 @@
         },
         {
           "type": "text",
+          "named": true
+        },
+        {
+          "type": "trans_statement",
           "named": true
         },
         {
@@ -2093,6 +2189,14 @@
           "named": true
         },
         {
+          "type": "debug_statement",
+          "named": true
+        },
+        {
+          "type": "do_statement",
+          "named": true
+        },
+        {
           "type": "else_clause",
           "named": true
         },
@@ -2113,7 +2217,15 @@
           "named": true
         },
         {
+          "type": "from_statement",
+          "named": true
+        },
+        {
           "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "import_statement",
           "named": true
         },
         {
@@ -2129,6 +2241,10 @@
           "named": true
         },
         {
+          "type": "raw_statement",
+          "named": true
+        },
+        {
           "type": "set_block",
           "named": true
         },
@@ -2138,6 +2254,10 @@
         },
         {
           "type": "text",
+          "named": true
+        },
+        {
+          "type": "trans_statement",
           "named": true
         },
         {
@@ -2531,6 +2651,14 @@
           "named": true
         },
         {
+          "type": "debug_statement",
+          "named": true
+        },
+        {
+          "type": "do_statement",
+          "named": true
+        },
+        {
           "type": "elif_clause",
           "named": true
         },
@@ -2547,6 +2675,10 @@
           "named": true
         },
         {
+          "type": "from_statement",
+          "named": true
+        },
+        {
           "type": "if_close",
           "named": true
         },
@@ -2556,6 +2688,10 @@
         },
         {
           "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "import_statement",
           "named": true
         },
         {
@@ -2571,6 +2707,10 @@
           "named": true
         },
         {
+          "type": "raw_statement",
+          "named": true
+        },
+        {
           "type": "set_block",
           "named": true
         },
@@ -2580,6 +2720,10 @@
         },
         {
           "type": "text",
+          "named": true
+        },
+        {
+          "type": "trans_statement",
           "named": true
         },
         {
@@ -3164,6 +3308,14 @@
           "named": true
         },
         {
+          "type": "debug_statement",
+          "named": true
+        },
+        {
+          "type": "do_statement",
+          "named": true
+        },
+        {
           "type": "filter_statement",
           "named": true
         },
@@ -3172,7 +3324,15 @@
           "named": true
         },
         {
+          "type": "from_statement",
+          "named": true
+        },
+        {
           "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "import_statement",
           "named": true
         },
         {
@@ -3196,6 +3356,10 @@
           "named": true
         },
         {
+          "type": "raw_statement",
+          "named": true
+        },
+        {
           "type": "set_block",
           "named": true
         },
@@ -3205,6 +3369,10 @@
         },
         {
           "type": "text",
+          "named": true
+        },
+        {
+          "type": "trans_statement",
           "named": true
         },
         {
@@ -3931,6 +4099,14 @@
           "named": true
         },
         {
+          "type": "debug_statement",
+          "named": true
+        },
+        {
+          "type": "do_statement",
+          "named": true
+        },
+        {
           "type": "filter_statement",
           "named": true
         },
@@ -3939,7 +4115,15 @@
           "named": true
         },
         {
+          "type": "from_statement",
+          "named": true
+        },
+        {
           "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "import_statement",
           "named": true
         },
         {
@@ -3952,6 +4136,10 @@
         },
         {
           "type": "print",
+          "named": true
+        },
+        {
+          "type": "raw_statement",
           "named": true
         },
         {
@@ -3972,6 +4160,10 @@
         },
         {
           "type": "text",
+          "named": true
+        },
+        {
+          "type": "trans_statement",
           "named": true
         },
         {
@@ -5458,6 +5650,14 @@
           "named": true
         },
         {
+          "type": "debug_statement",
+          "named": true
+        },
+        {
+          "type": "do_statement",
+          "named": true
+        },
+        {
           "type": "filter_statement",
           "named": true
         },
@@ -5466,7 +5666,15 @@
           "named": true
         },
         {
+          "type": "from_statement",
+          "named": true
+        },
+        {
           "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "import_statement",
           "named": true
         },
         {
@@ -5482,6 +5690,10 @@
           "named": true
         },
         {
+          "type": "raw_statement",
+          "named": true
+        },
+        {
           "type": "set_block",
           "named": true
         },
@@ -5491,6 +5703,10 @@
         },
         {
           "type": "text",
+          "named": true
+        },
+        {
+          "type": "trans_statement",
           "named": true
         },
         {

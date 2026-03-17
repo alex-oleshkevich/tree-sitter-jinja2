@@ -268,8 +268,10 @@ module.exports = grammar({
     ),
     _body_node: $ => choice(
       $.print, $.if_statement, $.for_statement, $.set_statement, $.set_block,
-      $.include_statement, $.call_block, $.with_statement, $.block_statement,
-      $.macro_statement, $.autoescape_statement, $.filter_statement,
+      $.include_statement, $.import_statement, $.from_statement,
+      $.call_block, $.with_statement, $.block_statement,
+      $.macro_statement, $.trans_statement, $.autoescape_statement,
+      $.raw_statement, $.do_statement, $.debug_statement, $.filter_statement,
       $.custom_open, $.custom_close, $.comment, $.text,
     ),
     if_statement: $ => seq(
@@ -317,7 +319,11 @@ module.exports = grammar({
     ),
     for_statement: $ => seq(
       $.for_open,
-      repeat(prec.right(choice($._body_node, $.else_clause))),
+      repeat(prec.right($._body_node)),
+      optional(seq(
+        $.else_clause,
+        repeat(prec.right($._body_node)),
+      )),
       $.for_close,
     ),
 

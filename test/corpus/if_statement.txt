@@ -247,3 +247,57 @@ Macro inside if
       (statement_begin)
       (endif_keyword)
       (statement_end))))
+
+================================================================================
+Do statement inside if
+================================================================================
+{% if x %}{% do list.append(1) %}{% endif %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (if_statement
+    (if_open
+      (statement_begin)
+      (if_keyword)
+      condition: (identifier)
+      (statement_end))
+    (do_statement
+      (statement_begin)
+      (do_keyword)
+      expression: (method_call
+        object: (identifier)
+        method: (identifier)
+        positional_argument: (number))
+      (statement_end))
+    (if_close
+      (statement_begin)
+      (endif_keyword)
+      (statement_end))))
+
+================================================================================
+Raw block inside if
+================================================================================
+{% if x %}{% raw %}{{ literal }}{% endraw %}{% endif %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (if_statement
+    (if_open
+      (statement_begin)
+      (if_keyword)
+      condition: (identifier)
+      (statement_end))
+    (raw_statement
+      (raw_open
+        (statement_begin)
+        (raw_keyword)
+        (statement_end))
+      (raw_content)
+      (raw_close
+        (statement_begin)
+        (endraw_keyword)
+        (statement_end)))
+    (if_close
+      (statement_begin)
+      (endif_keyword)
+      (statement_end))))
