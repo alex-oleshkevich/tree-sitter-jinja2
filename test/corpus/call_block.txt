@@ -117,6 +117,29 @@ Call with method call target
       (statement_end))))
 
 ================================================================================
+Call with deep dotted method call target
+================================================================================
+{% call a.b.c(x) %}{% endcall %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (call_block
+    (call_open
+      (statement_begin)
+      (call_keyword)
+      call: (method_call
+        object: (attribute_access
+          object: (identifier)
+          attribute: (identifier))
+        method: (identifier)
+        positional_argument: (identifier))
+      (statement_end))
+    (call_close
+      (statement_begin)
+      (endcall_keyword)
+      (statement_end))))
+
+================================================================================
 Call with method call target and block content
 ================================================================================
 {% call ui.card(fp.name, footer="Limited time offer") %}{% set x = 1 %}{% endcall %}

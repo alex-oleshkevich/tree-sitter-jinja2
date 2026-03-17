@@ -441,8 +441,13 @@ module.exports = grammar({
       )),
       ')',
     ),
+    _call_attr_chain: $ => prec.left(seq(
+      field('object', choice($.identifier, alias($._call_attr_chain, $.attribute_access))),
+      '.',
+      field('attribute', $.identifier),
+    )),
     _call_target: $ => prec.left(seq(
-      field('object', $.identifier),
+      field('object', choice($.identifier, alias($._call_attr_chain, $.attribute_access))),
       '.',
       field('method', $.identifier),
       $._argument_list,
