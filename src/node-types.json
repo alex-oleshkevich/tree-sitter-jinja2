@@ -835,6 +835,10 @@
           {
             "type": "function_call",
             "named": true
+          },
+          {
+            "type": "method_call",
+            "named": true
           }
         ]
       }

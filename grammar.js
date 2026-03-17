@@ -441,11 +441,17 @@ module.exports = grammar({
       )),
       ')',
     ),
+    _call_target: $ => prec.left(seq(
+      field('object', $.identifier),
+      '.',
+      field('method', $.identifier),
+      $._argument_list,
+    )),
     call_open: $ => seq(
       $.statement_begin,
       $.call_keyword,
       optional($.caller_args),
-      field('call', $.function_call),
+      field('call', choice($.function_call, alias($._call_target, $.method_call))),
       $.statement_end,
     ),
     call_close: $ => seq(

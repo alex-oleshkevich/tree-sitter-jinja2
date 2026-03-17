@@ -3516,6 +3516,39 @@
         }
       ]
     },
+    "_call_target": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "object",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "."
+          },
+          {
+            "type": "FIELD",
+            "name": "method",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
+            }
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_argument_list"
+          }
+        ]
+      }
+    },
     "call_open": {
       "type": "SEQ",
       "members": [
@@ -3543,8 +3576,22 @@
           "type": "FIELD",
           "name": "call",
           "content": {
-            "type": "SYMBOL",
-            "name": "function_call"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "function_call"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_call_target"
+                },
+                "named": true,
+                "value": "method_call"
+              }
+            ]
           }
         },
         {

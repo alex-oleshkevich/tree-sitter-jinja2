@@ -93,6 +93,63 @@ Call with multiple caller arguments
       (statement_end))))
 
 ================================================================================
+Call with method call target
+================================================================================
+{% call ui.call("var", key="word") %}{% endcall %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (call_block
+    (call_open
+      (statement_begin)
+      (call_keyword)
+      call: (method_call
+        object: (identifier)
+        method: (identifier)
+        positional_argument: (string)
+        (keyword_argument
+          name: (identifier)
+          value: (string)))
+      (statement_end))
+    (call_close
+      (statement_begin)
+      (endcall_keyword)
+      (statement_end))))
+
+================================================================================
+Call with method call target and block content
+================================================================================
+{% call ui.card(fp.name, footer="Limited time offer") %}{% set x = 1 %}{% endcall %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (call_block
+    (call_open
+      (statement_begin)
+      (call_keyword)
+      call: (method_call
+        object: (identifier)
+        method: (identifier)
+        positional_argument: (attribute_access
+          object: (identifier)
+          attribute: (identifier))
+        (keyword_argument
+          name: (identifier)
+          value: (string)))
+      (statement_end))
+    (set_statement
+      (statement_begin)
+      (set_keyword)
+      (assignment
+        name: (identifier)
+        value: (number))
+      (statement_end))
+    (call_close
+      (statement_begin)
+      (endcall_keyword)
+      (statement_end))))
+
+================================================================================
 Call with if inside
 ================================================================================
 {% call dialog() %}{% if x %}y{% endif %}{% endcall %}
