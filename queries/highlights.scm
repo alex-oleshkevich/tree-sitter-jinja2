@@ -88,7 +88,7 @@
 
 ; Macro definitions
 (macro_open name: (identifier) @function)
-(macro_close name: (identifier) @function.call)
+(macro_close name: (identifier) @function)
 
 ; Block names
 (block_open name: (identifier) @label)
@@ -99,6 +99,16 @@
 (filter_open name: (identifier) @function.call)
 (filter_open name: (function_call name: (identifier) @function.call))
 (set_block_open filter: (filter name: (identifier) @function.call))
+
+; Template references
+(extends_statement template: (string) @string)
+(extends_statement template: (identifier) @variable)
+(include_statement template: (string) @string)
+(include_statement template: (identifier) @variable)
+(import_statement template: (string) @string)
+(import_statement template: (identifier) @variable)
+(from_statement template: (string) @string)
+(from_statement template: (identifier) @variable)
 
 ; Test expressions
 (test_expression test: (identifier) @function.builtin)
