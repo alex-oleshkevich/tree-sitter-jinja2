@@ -2513,7 +2513,7 @@
           },
           {
             "type": "FIELD",
-            "name": "filter",
+            "name": "condition",
             "content": {
               "type": "SYMBOL",
               "name": "_expression"

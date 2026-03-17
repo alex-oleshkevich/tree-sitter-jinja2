@@ -149,7 +149,7 @@ For with triple unpacking and condition
       iterable: (identifier)
       (for_condition
         (if_keyword)
-        filter: (binary_expression
+        condition: (binary_expression
           left: (identifier)
           right: (number)))
       (statement_end))
@@ -178,7 +178,7 @@ For with filter condition
       iterable: (identifier)
       (for_condition
         (if_keyword)
-        filter: (binary_expression
+        condition: (binary_expression
           left: (identifier)
           right: (number)))
       (statement_end))

@@ -1842,7 +1842,7 @@
     "type": "for_condition",
     "named": true,
     "fields": {
-      "filter": {
+      "condition": {
         "multiple": false,
         "required": true,
         "types": [

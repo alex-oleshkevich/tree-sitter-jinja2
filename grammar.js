@@ -298,7 +298,7 @@ module.exports = grammar({
     ),
     for_condition: $ => prec(1, seq(
       $.if_keyword,
-      field('filter', $._expression),
+      field('condition', $._expression),
     )),
     for_open: $ => seq(
       $.statement_begin,
