@@ -2,7 +2,8 @@
 (macro_statement) @local.scope
 
 (macro_open
-  name: (identifier) @local.definition.function)
+  name: (identifier) @local.definition.function
+  (#set! definition.function.scope "parent"))
 
 (parameter
   name: (identifier) @local.definition.parameter)
@@ -64,10 +65,13 @@
 (import_statement
   alias: (identifier) @local.definition.variable)
 
+; When imported without alias, name is the local binding
 (from_statement
   (import_name
-    name: (identifier) @local.definition.variable))
+    name: (identifier) @local.definition.variable
+    !alias))
 
+; When imported with alias, only alias is the local binding
 (from_statement
   (import_name
     alias: (identifier) @local.definition.variable))
