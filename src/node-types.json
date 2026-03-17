@@ -5335,6 +5335,21 @@
     }
   },
   {
+    "type": "with_arguments",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "with_close",
     "named": true,
     "fields": {},
@@ -5379,15 +5394,22 @@
   {
     "type": "with_open",
     "named": true,
-    "fields": {},
+    "fields": {
+      "arguments": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "with_arguments",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "assignment",
-          "named": true
-        },
         {
           "type": "statement_begin",
           "named": true
