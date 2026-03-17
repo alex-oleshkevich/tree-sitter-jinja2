@@ -272,12 +272,19 @@ module.exports = grammar({
       $.if_close,
     ),
 
-    unpacking: $ => seq(
-      optional('('),
-      $.identifier,
-      repeat1(seq(',', $.identifier)),
-      optional(','),
-      optional(')'),
+    unpacking: $ => choice(
+      seq(
+        '(',
+        $.identifier,
+        repeat1(seq(',', $.identifier)),
+        optional(','),
+        ')',
+      ),
+      seq(
+        $.identifier,
+        repeat1(seq(',', $.identifier)),
+        optional(','),
+      ),
     ),
     _for_target: $ => choice(
       $.identifier,
