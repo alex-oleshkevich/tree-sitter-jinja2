@@ -139,7 +139,6 @@ module.exports = grammar({
       field('name', $.identifier),
       optional($._argument_list),
     )),
-    _filter: $ => $.filter,
     _literal: $ => choice(
       $.boolean, $.none, $.list, $.tuple, $.dict, $.string, $.number,
     ),
@@ -168,13 +167,11 @@ module.exports = grammar({
       prec.left(7, seq(field('left', $._expression), field('operator', '%'), field('right', $._expression))),
       prec.right(8, seq(field('left', $._expression), field('operator', '**'), field('right', $._expression))),
     ),
-    _binary_expression: $ => $.binary_expression,
     unary_expression: $ => choice(
       prec.right(3, seq(field('operator', 'not'), field('operand', $._expression))),
       prec(9, seq(field('operator', '-'), field('operand', choice($._primary_expression, $.unary_expression)))),
       prec(9, seq(field('operator', '+'), field('operand', choice($._primary_expression, $.unary_expression)))),
     ),
-    _unary_expression: $ => $.unary_expression,
     is_keyword: $ => token(prec(1, 'is')),
     not_keyword: $ => token(prec(1, 'not')),
     test_expression: $ => prec.left(4, seq(
@@ -183,7 +180,6 @@ module.exports = grammar({
       optional($.not_keyword),
       field('test', choice($.function_call, $.identifier, $.none)),
     )),
-    _test_expression: $ => $.test_expression,
     if_keyword: $ => token(prec(1, 'if')),
     elif_keyword: $ => token(prec(1, 'elif')),
     else_keyword: $ => token(prec(1, 'else')),
@@ -236,11 +232,11 @@ module.exports = grammar({
     )),
     _expression: $ => choice(
       $._primary_expression,
-      $._binary_expression,
-      $._unary_expression,
-      $._test_expression,
+      $.binary_expression,
+      $.unary_expression,
+      $.test_expression,
       $.ternary_expression,
-      $._filter,
+      $.filter,
     ),
     print: $ => seq(
       $.print_begin,

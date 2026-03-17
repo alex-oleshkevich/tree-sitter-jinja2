@@ -943,10 +943,6 @@
         ]
       }
     },
-    "_filter": {
-      "type": "SYMBOL",
-      "name": "filter"
-    },
     "_literal": {
       "type": "CHOICE",
       "members": [
@@ -1486,10 +1482,6 @@
         }
       ]
     },
-    "_binary_expression": {
-      "type": "SYMBOL",
-      "name": "binary_expression"
-    },
     "unary_expression": {
       "type": "CHOICE",
       "members": [
@@ -1588,10 +1580,6 @@
         }
       ]
     },
-    "_unary_expression": {
-      "type": "SYMBOL",
-      "name": "unary_expression"
-    },
     "is_keyword": {
       "type": "TOKEN",
       "content": {
@@ -1667,10 +1655,6 @@
           }
         ]
       }
-    },
-    "_test_expression": {
-      "type": "SYMBOL",
-      "name": "test_expression"
     },
     "if_keyword": {
       "type": "TOKEN",
@@ -2186,15 +2170,15 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_binary_expression"
+          "name": "binary_expression"
         },
         {
           "type": "SYMBOL",
-          "name": "_unary_expression"
+          "name": "unary_expression"
         },
         {
           "type": "SYMBOL",
-          "name": "_test_expression"
+          "name": "test_expression"
         },
         {
           "type": "SYMBOL",
@@ -2202,7 +2186,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_filter"
+          "name": "filter"
         }
       ]
     },
