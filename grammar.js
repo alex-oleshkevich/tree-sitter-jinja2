@@ -566,7 +566,7 @@ module.exports = grammar({
     autoescape_open: $ => seq(
       $.statement_begin,
       $.autoescape_keyword,
-      field('value', $._expression),
+      optional(field('value', $._expression)),
       $.statement_end,
     ),
     autoescape_close: $ => seq(

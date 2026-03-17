@@ -59,3 +59,24 @@ Empty autoescape
       (statement_begin)
       (endautoescape_keyword)
       (statement_end))))
+
+================================================================================
+Autoescape without value
+================================================================================
+{% autoescape %}{{ x }}{% endautoescape %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (autoescape_statement
+    (autoescape_open
+      (statement_begin)
+      (autoescape_keyword)
+      (statement_end))
+    (print
+      (print_begin)
+      (identifier)
+      (print_end))
+    (autoescape_close
+      (statement_begin)
+      (endautoescape_keyword)
+      (statement_end))))
