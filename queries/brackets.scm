@@ -10,4 +10,4 @@
 (function_call "(" @open ")" @close)
 (method_call "(" @open ")" @close)
 (caller_args "(" @open ")" @close)
-(macro_statement "(" @open ")" @close)
+(macro_open "(" @open ")" @close)
