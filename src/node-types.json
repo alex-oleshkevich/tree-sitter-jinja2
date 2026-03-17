@@ -5101,6 +5101,48 @@
     }
   },
   {
+    "type": "test_call",
+    "named": true,
+    "fields": {
+      "argument": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "test_expression",
     "named": true,
     "fields": {
@@ -5122,6 +5164,10 @@
           },
           {
             "type": "none",
+            "named": true
+          },
+          {
+            "type": "test_call",
             "named": true
           }
         ]

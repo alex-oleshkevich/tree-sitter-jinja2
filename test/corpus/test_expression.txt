@@ -141,6 +141,57 @@ Negated test is not true
     (print_end)))
 
 ================================================================================
+Test with unparenthesised number argument
+================================================================================
+{{ x is sameas 3 }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (test_expression
+      value: (identifier)
+      (is_keyword)
+      test: (test_call
+        name: (identifier)
+        argument: (number)))
+    (print_end)))
+
+================================================================================
+Test with unparenthesised boolean argument
+================================================================================
+{{ x is sameas true }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (test_expression
+      value: (identifier)
+      (is_keyword)
+      test: (test_call
+        name: (identifier)
+        argument: (boolean)))
+    (print_end)))
+
+================================================================================
+Test with unparenthesised identifier argument
+================================================================================
+{{ x is sameas y }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (test_expression
+      value: (identifier)
+      (is_keyword)
+      test: (test_call
+        name: (identifier)
+        argument: (identifier)))
+    (print_end)))
+
+================================================================================
 Test on expression
 ================================================================================
 {{ (x + 1) is defined }}

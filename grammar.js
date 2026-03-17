@@ -13,9 +13,11 @@
 module.exports = grammar({
   name: "jinja2",
   extras: $ => [/\s/],
+  externals: $ => [$.raw_content],
   conflicts: $ => [
     [$._primary_expression, $.unpacking],
     [$.function_call, $._primary_expression],
+
     [$.subscript, $._expression],
     [$.trans_open, $._literal],
   ],
@@ -175,11 +177,15 @@ module.exports = grammar({
     ),
     is_keyword: $ => token(prec(1, 'is')),
     not_keyword: $ => token(prec(1, 'not')),
+    test_call: $ => seq(
+      field('name', $.identifier),
+      field('argument', choice($.boolean, $.none, $.string, $.number, $.identifier)),
+    ),
     test_expression: $ => prec.left(4, seq(
       field('value', $._expression),
       $.is_keyword,
       optional($.not_keyword),
-      field('test', choice($.function_call, $.identifier, $.none, $.boolean)),
+      field('test', choice($.function_call, $.test_call, $.identifier, $.none, $.boolean)),
     )),
     if_keyword: $ => token(prec(1, 'if')),
     elif_keyword: $ => token(prec(1, 'elif')),
@@ -581,7 +587,6 @@ module.exports = grammar({
       $.autoescape_close,
     ),
 
-    raw_content: $ => /([^{]|\{[^%])+/,
     raw_open: $ => seq(
       $.statement_begin,
       $.raw_keyword,

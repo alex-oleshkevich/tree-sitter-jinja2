@@ -1598,6 +1598,48 @@
         }
       }
     },
+    "test_call": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "argument",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "boolean"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "none"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "string"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "number"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "identifier"
+              }
+            ]
+          }
+        }
+      ]
+    },
     "test_expression": {
       "type": "PREC_LEFT",
       "value": 4,
@@ -1637,6 +1679,10 @@
                 {
                   "type": "SYMBOL",
                   "name": "function_call"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "test_call"
                 },
                 {
                   "type": "SYMBOL",
@@ -4133,10 +4179,6 @@
         }
       ]
     },
-    "raw_content": {
-      "type": "PATTERN",
-      "value": "([^{]|\\{[^%])+"
-    },
     "raw_open": {
       "type": "SEQ",
       "members": [
@@ -4463,7 +4505,12 @@
     ]
   ],
   "precedences": [],
-  "externals": [],
+  "externals": [
+    {
+      "type": "SYMBOL",
+      "name": "raw_content"
+    }
+  ],
   "inline": [],
   "supertypes": [],
   "reserved": {}
