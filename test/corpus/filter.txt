@@ -123,3 +123,37 @@ Filter on method call
         method: (identifier))
       name: (identifier))
     (print_end)))
+
+================================================================================
+Filter on binary expression - filter binds tighter than addition
+================================================================================
+{{ a + b | string }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (binary_expression
+      left: (identifier)
+      right: (filter
+        value: (identifier)
+        name: (identifier)))
+    (print_end)))
+
+================================================================================
+Chained filter on binary expression
+================================================================================
+{{ a + b | string | upper }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (binary_expression
+      left: (identifier)
+      right: (filter
+        value: (filter
+          value: (identifier)
+          name: (identifier))
+        name: (identifier)))
+    (print_end)))
