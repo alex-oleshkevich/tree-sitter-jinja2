@@ -97,8 +97,7 @@
 (filter name: (identifier) @function.call)
 (filter_open name: (identifier) @function.call)
 (filter_open name: (function_call name: (identifier) @function.call))
-(set_block_open filter: (identifier) @function.call)
-(set_block_open filter: (function_call name: (identifier) @function.call))
+(set_block_open filter: (filter name: (identifier) @function.call))
 
 ; Test expressions
 (test_expression test: (identifier) @function.builtin)

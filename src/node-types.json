@@ -1583,7 +1583,7 @@
       },
       "value": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "attribute_access",
@@ -4013,11 +4013,7 @@
         "required": false,
         "types": [
           {
-            "type": "function_call",
-            "named": true
-          },
-          {
-            "type": "identifier",
+            "type": "filter",
             "named": true
           }
         ]
