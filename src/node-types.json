@@ -3886,7 +3886,18 @@
   {
     "type": "pluralize_clause",
     "named": true,
-    "fields": {},
+    "fields": {
+      "variable": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,

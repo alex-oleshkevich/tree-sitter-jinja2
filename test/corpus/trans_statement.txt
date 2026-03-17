@@ -98,6 +98,37 @@ Trans with pluralize
       (statement_end))))
 
 ================================================================================
+Trans with pluralize variable
+================================================================================
+{% trans count=num, user_count=users %}item{% pluralize user_count %}items{% endtrans %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (trans_statement
+    (trans_open
+      (statement_begin)
+      (trans_keyword)
+      arguments: (trans_arguments
+        (assignment
+          name: (identifier)
+          value: (identifier))
+        (assignment
+          name: (identifier)
+          value: (identifier)))
+      (statement_end))
+    (text)
+    (pluralize_clause
+      (statement_begin)
+      (pluralize_keyword)
+      variable: (identifier)
+      (statement_end))
+    (text)
+    (trans_close
+      (statement_begin)
+      (endtrans_keyword)
+      (statement_end))))
+
+================================================================================
 Trans trimmed
 ================================================================================
 {% trans trimmed %}  Hello  {% endtrans %}

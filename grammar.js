@@ -351,8 +351,10 @@ module.exports = grammar({
       $.statement_begin,
       $.block_keyword,
       field('name', $.identifier),
-      optional($.scoped_keyword),
-      optional($.required_keyword),
+      optional(choice(
+        seq($.scoped_keyword, optional($.required_keyword)),
+        $.required_keyword,
+      )),
       $.statement_end,
     ),
     block_close: $ => seq(
@@ -536,6 +538,7 @@ module.exports = grammar({
     pluralize_clause: $ => seq(
       $.statement_begin,
       $.pluralize_keyword,
+      optional(field('variable', $.identifier)),
       $.statement_end,
     ),
     trans_close: $ => seq(
