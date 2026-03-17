@@ -101,6 +101,7 @@ testo:
 
 
 testd:
+	make gen
 	$(TS) test -d
 gen:
 	$(TS) generate
