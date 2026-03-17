@@ -1649,6 +1649,10 @@
                 {
                   "type": "SYMBOL",
                   "name": "none"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "boolean"
                 }
               ]
             }

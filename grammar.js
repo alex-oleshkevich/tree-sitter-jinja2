@@ -178,7 +178,7 @@ module.exports = grammar({
       field('value', $._expression),
       $.is_keyword,
       optional($.not_keyword),
-      field('test', choice($.function_call, $.identifier, $.none)),
+      field('test', choice($.function_call, $.identifier, $.none, $.boolean)),
     )),
     if_keyword: $ => token(prec(1, 'if')),
     elif_keyword: $ => token(prec(1, 'elif')),

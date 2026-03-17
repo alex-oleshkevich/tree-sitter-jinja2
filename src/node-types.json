@@ -4659,6 +4659,10 @@
         "required": true,
         "types": [
           {
+            "type": "boolean",
+            "named": true
+          },
+          {
             "type": "function_call",
             "named": true
           },
