@@ -1,7 +1,18 @@
+; Block definitions (no scope — variables leak out unless scoped keyword used)
+(block_open
+  name: (identifier) @local.definition.namespace)
+
+(block_close
+  name: (identifier) @local.definition.namespace)
+
 ; Macro creates a new scope with parameters
 (macro_statement) @local.scope
 
 (macro_open
+  name: (identifier) @local.definition.function
+  (#set! definition.function.scope "parent"))
+
+(macro_close
   name: (identifier) @local.definition.function
   (#set! definition.function.scope "parent"))
 
@@ -55,7 +66,9 @@
   target: (identifier) @local.definition.variable
   (#set! definition.variable.scope "parent"))
 
-; Trans variables
+; Trans block scope and variables
+(trans_statement) @local.scope
+
 (trans_open
   (trans_arguments
     (assignment
