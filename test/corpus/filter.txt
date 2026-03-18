@@ -9,7 +9,8 @@ Simple filter
     (print_begin)
     (filter
       value: (identifier)
-      name: (identifier))
+      filter: (filter_name
+        name: (identifier)))
     (print_end)))
 
 ================================================================================
@@ -23,8 +24,9 @@ Filter with argument
     (print_begin)
     (filter
       value: (identifier)
-      name: (identifier)
-      positional_argument: (string))
+      filter: (filter_name
+        name: (identifier)
+        positional_argument: (string)))
     (print_end)))
 
 ================================================================================
@@ -38,8 +40,9 @@ Filter with multiple arguments
     (print_begin)
     (filter
       value: (identifier)
-      name: (identifier)
-      positional_argument: (string))
+      filter: (filter_name
+        name: (identifier)
+        positional_argument: (string)))
     (print_end)))
 
 ================================================================================
@@ -52,10 +55,11 @@ Chained filters
   (print
     (print_begin)
     (filter
-      value: (filter
-        value: (identifier)
+      value: (identifier)
+      filter: (filter_name
         name: (identifier))
-      name: (identifier))
+      filter: (filter_name
+        name: (identifier)))
     (print_end)))
 
 ================================================================================
@@ -72,7 +76,8 @@ Filter on parenthesized expression
         (binary_expression
           left: (identifier)
           right: (identifier)))
-      name: (identifier))
+      filter: (filter_name
+        name: (identifier)))
     (print_end)))
 
 ================================================================================
@@ -86,10 +91,11 @@ Filter with keyword argument
     (print_begin)
     (filter
       value: (identifier)
-      name: (identifier)
-      (keyword_argument
+      filter: (filter_name
         name: (identifier)
-        value: (string)))
+        (keyword_argument
+          name: (identifier)
+          value: (string))))
     (print_end)))
 
 ================================================================================
@@ -104,7 +110,8 @@ Filter precedence over addition
     (binary_expression
       left: (filter
         value: (identifier)
-        name: (identifier))
+        filter: (filter_name
+          name: (identifier)))
       right: (identifier))
     (print_end)))
 
@@ -121,7 +128,8 @@ Filter on method call
       value: (method_call
         object: (identifier)
         method: (identifier))
-      name: (identifier))
+      filter: (filter_name
+        name: (identifier)))
     (print_end)))
 
 ================================================================================
@@ -133,10 +141,11 @@ Filter on binary expression - filter binds tighter than addition
 (source_file
   (print
     (print_begin)
-    (binary_expression
-      left: (identifier)
-      right: (filter
-        value: (identifier)
+    (filter
+      value: (binary_expression
+        left: (identifier)
+        right: (identifier))
+      filter: (filter_name
         name: (identifier)))
     (print_end)))
 
@@ -149,11 +158,13 @@ Chained filter on binary expression
 (source_file
   (print
     (print_begin)
-    (binary_expression
-      left: (identifier)
-      right: (filter
-        value: (filter
+    (filter
+      value: (binary_expression
+        left: (identifier)
+        right: (filter
           value: (identifier)
-          name: (identifier))
+          filter: (filter_name
+            name: (identifier))))
+      filter: (filter_name
         name: (identifier)))
     (print_end)))

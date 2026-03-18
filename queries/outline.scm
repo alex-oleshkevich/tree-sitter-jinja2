@@ -39,18 +39,7 @@
 (filter_statement
   (filter_open
     (filter_keyword) @context
-    filter: (identifier) @name)) @item
-
-(filter_statement
-  (filter_open
-    (filter_keyword) @context
-    filter: (function_call
-      name: (identifier) @name))) @item
-
-(filter_statement
-  (filter_open
-    (filter_keyword) @context
-    filter: (filter
+    filter: (filter_name
       name: (identifier) @name))) @item
 
 (with_statement

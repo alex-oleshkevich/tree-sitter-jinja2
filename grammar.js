@@ -20,6 +20,8 @@ module.exports = grammar({
 
     [$.subscript, $._expression],
     [$.trans_open, $._literal],
+    [$.filter_name],
+    [$._unfiltered_expression, $._expression],
   ],
   rules: {
     source_file: $ => repeat($._node),
@@ -136,11 +138,23 @@ module.exports = grammar({
       $._expression,
       ')',
     ),
-    filter: $ => prec.left(10, seq(
-      field('value', $._expression),
-      '|',
+    filter_name: $ => seq(
       field('name', $.identifier),
       optional($._argument_list),
+    ),
+    _unfiltered_expression: $ => choice(
+      $._primary_expression,
+      $.binary_expression,
+      $.unary_expression,
+      $.test_expression,
+      $.ternary_expression,
+    ),
+    filter: $ => prec.left(seq(
+      field('value', $._unfiltered_expression),
+      repeat1(seq(
+        token(prec(11, seq(optional(/\s+/), '|'))),
+        field('filter', $.filter_name),
+      )),
     )),
     _literal: $ => choice(
       $.boolean, $.none, $.list, $.tuple, $.dict, $.string, $.number,
@@ -443,7 +457,11 @@ module.exports = grammar({
       $.statement_begin,
       $.set_keyword,
       field('target', $.identifier),
-      optional(seq('|', field('filter', $._expression))),
+      optional(seq(
+        '|',
+        field('filter', $.filter_name),
+        repeat(seq('|', field('filter', $.filter_name))),
+      )),
       $.statement_end,
     ),
     set_block_close: $ => seq(
@@ -608,7 +626,8 @@ module.exports = grammar({
     filter_open: $ => seq(
       $.statement_begin,
       $.filter_keyword,
-      field('filter', $._expression),
+      field('filter', $.filter_name),
+      repeat(seq('|', field('filter', $.filter_name))),
       $.statement_end,
     ),
     filter_close: $ => seq(

@@ -9,7 +9,8 @@ Basic filter statement
     (filter_open
       (statement_begin)
       (filter_keyword)
-      filter: (identifier)
+      filter: (filter_name
+        name: (identifier))
       (statement_end))
     (text)
     (filter_close
@@ -28,7 +29,7 @@ Filter statement with arguments
     (filter_open
       (statement_begin)
       (filter_keyword)
-      filter: (function_call
+      filter: (filter_name
         name: (identifier)
         positional_argument: (string)
         positional_argument: (string))
@@ -50,7 +51,8 @@ Filter statement with print inside
     (filter_open
       (statement_begin)
       (filter_keyword)
-      filter: (identifier)
+      filter: (filter_name
+        name: (identifier))
       (statement_end))
     (print
       (print_begin)
@@ -72,7 +74,8 @@ Empty filter statement
     (filter_open
       (statement_begin)
       (filter_keyword)
-      filter: (identifier)
+      filter: (filter_name
+        name: (identifier))
       (statement_end))
     (filter_close
       (statement_begin)

@@ -1656,19 +1656,19 @@
     "type": "filter",
     "named": true,
     "fields": {
-      "name": {
-        "multiple": false,
+      "filter": {
+        "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "identifier",
+            "type": "filter_name",
             "named": true
           }
         ]
       },
-      "positional_argument": {
-        "multiple": true,
-        "required": false,
+      "value": {
+        "multiple": false,
+        "required": true,
         "types": [
           {
             "type": "attribute_access",
@@ -1684,10 +1684,6 @@
           },
           {
             "type": "dict",
-            "named": true
-          },
-          {
-            "type": "filter",
             "named": true
           },
           {
@@ -1743,10 +1739,49 @@
             "named": true
           }
         ]
-      },
-      "value": {
+      }
+    }
+  },
+  {
+    "type": "filter_close",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "endfilter_keyword",
+          "named": true
+        },
+        {
+          "type": "statement_begin",
+          "named": true
+        },
+        {
+          "type": "statement_end",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "filter_name",
+    "named": true,
+    "fields": {
+      "name": {
         "multiple": false,
         "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "positional_argument": {
+        "multiple": true,
+        "required": false,
         "types": [
           {
             "type": "attribute_access",
@@ -1835,106 +1870,15 @@
     }
   },
   {
-    "type": "filter_close",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "endfilter_keyword",
-          "named": true
-        },
-        {
-          "type": "statement_begin",
-          "named": true
-        },
-        {
-          "type": "statement_end",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "filter_open",
     "named": true,
     "fields": {
       "filter": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "attribute_access",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "boolean",
-            "named": true
-          },
-          {
-            "type": "dict",
-            "named": true
-          },
-          {
-            "type": "filter",
-            "named": true
-          },
-          {
-            "type": "function_call",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "method_call",
-            "named": true
-          },
-          {
-            "type": "none",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "subscript",
-            "named": true
-          },
-          {
-            "type": "ternary_expression",
-            "named": true
-          },
-          {
-            "type": "test_expression",
-            "named": true
-          },
-          {
-            "type": "tuple",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
+            "type": "filter_name",
             "named": true
           }
         ]
@@ -4347,79 +4291,11 @@
     "named": true,
     "fields": {
       "filter": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "attribute_access",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "boolean",
-            "named": true
-          },
-          {
-            "type": "dict",
-            "named": true
-          },
-          {
-            "type": "filter",
-            "named": true
-          },
-          {
-            "type": "function_call",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "method_call",
-            "named": true
-          },
-          {
-            "type": "none",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "subscript",
-            "named": true
-          },
-          {
-            "type": "ternary_expression",
-            "named": true
-          },
-          {
-            "type": "test_expression",
-            "named": true
-          },
-          {
-            "type": "tuple",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
+            "type": "filter_name",
             "named": true
           }
         ]
