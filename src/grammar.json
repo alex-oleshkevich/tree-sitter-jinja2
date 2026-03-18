@@ -1,7 +1,6 @@
 {
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "jinja2",
-  "word": "identifier",
   "rules": {
     "source_file": {
       "type": "REPEAT",
@@ -291,38 +290,52 @@
       }
     },
     "boolean": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "true"
-        },
-        {
-          "type": "STRING",
-          "value": "false"
-        },
-        {
-          "type": "STRING",
-          "value": "True"
-        },
-        {
-          "type": "STRING",
-          "value": "False"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "true"
+            },
+            {
+              "type": "STRING",
+              "value": "false"
+            },
+            {
+              "type": "STRING",
+              "value": "True"
+            },
+            {
+              "type": "STRING",
+              "value": "False"
+            }
+          ]
         }
-      ]
+      }
     },
     "none": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "none"
-        },
-        {
-          "type": "STRING",
-          "value": "None"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "none"
+            },
+            {
+              "type": "STRING",
+              "value": "None"
+            }
+          ]
         }
-      ]
+      }
     },
     "keyword_argument": {
       "type": "SEQ",
@@ -1615,12 +1628,26 @@
       ]
     },
     "is_keyword": {
-      "type": "STRING",
-      "value": "is"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "is"
+        }
+      }
     },
     "not_keyword": {
-      "type": "STRING",
-      "value": "not"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "not"
+        }
+      }
     },
     "test_call": {
       "type": "SEQ",
@@ -1727,168 +1754,455 @@
       }
     },
     "if_keyword": {
-      "type": "STRING",
-      "value": "if"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "if"
+        }
+      }
     },
     "elif_keyword": {
-      "type": "STRING",
-      "value": "elif"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "elif"
+        }
+      }
     },
     "else_keyword": {
-      "type": "STRING",
-      "value": "else"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "else"
+        }
+      }
     },
     "endif_keyword": {
-      "type": "STRING",
-      "value": "endif"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "endif"
+        }
+      }
     },
     "for_keyword": {
-      "type": "STRING",
-      "value": "for"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "for"
+        }
+      }
     },
     "in_keyword": {
-      "type": "STRING",
-      "value": "in"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "in"
+        }
+      }
     },
     "endfor_keyword": {
-      "type": "STRING",
-      "value": "endfor"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "endfor"
+        }
+      }
     },
     "recursive_keyword": {
-      "type": "STRING",
-      "value": "recursive"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "recursive"
+        }
+      }
     },
     "extends_keyword": {
-      "type": "STRING",
-      "value": "extends"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "extends"
+        }
+      }
     },
     "block_keyword": {
-      "type": "STRING",
-      "value": "block"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "block"
+        }
+      }
     },
     "endblock_keyword": {
-      "type": "STRING",
-      "value": "endblock"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "endblock"
+        }
+      }
     },
     "scoped_keyword": {
-      "type": "STRING",
-      "value": "scoped"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "scoped"
+        }
+      }
     },
     "required_keyword": {
-      "type": "STRING",
-      "value": "required"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "required"
+        }
+      }
     },
     "include_keyword": {
-      "type": "STRING",
-      "value": "include"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "include"
+        }
+      }
     },
     "ignore_keyword": {
-      "type": "STRING",
-      "value": "ignore"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "ignore"
+        }
+      }
     },
     "missing_keyword": {
-      "type": "STRING",
-      "value": "missing"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "missing"
+        }
+      }
     },
     "with_keyword": {
-      "type": "STRING",
-      "value": "with"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "with"
+        }
+      }
     },
     "without_keyword": {
-      "type": "STRING",
-      "value": "without"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "without"
+        }
+      }
     },
     "context_keyword": {
-      "type": "STRING",
-      "value": "context"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "context"
+        }
+      }
     },
     "macro_keyword": {
-      "type": "STRING",
-      "value": "macro"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "macro"
+        }
+      }
     },
     "endmacro_keyword": {
-      "type": "STRING",
-      "value": "endmacro"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "endmacro"
+        }
+      }
     },
     "import_keyword": {
-      "type": "STRING",
-      "value": "import"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "import"
+        }
+      }
     },
     "from_keyword": {
-      "type": "STRING",
-      "value": "from"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "from"
+        }
+      }
     },
     "as_keyword": {
-      "type": "STRING",
-      "value": "as"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "as"
+        }
+      }
     },
     "set_keyword": {
-      "type": "STRING",
-      "value": "set"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "set"
+        }
+      }
     },
     "endset_keyword": {
-      "type": "STRING",
-      "value": "endset"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "endset"
+        }
+      }
     },
     "call_keyword": {
-      "type": "STRING",
-      "value": "call"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "call"
+        }
+      }
     },
     "endcall_keyword": {
-      "type": "STRING",
-      "value": "endcall"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "endcall"
+        }
+      }
     },
     "endwith_keyword": {
-      "type": "STRING",
-      "value": "endwith"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "endwith"
+        }
+      }
     },
     "trans_keyword": {
-      "type": "STRING",
-      "value": "trans"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "trans"
+        }
+      }
     },
     "endtrans_keyword": {
-      "type": "STRING",
-      "value": "endtrans"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "endtrans"
+        }
+      }
     },
     "pluralize_keyword": {
-      "type": "STRING",
-      "value": "pluralize"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "pluralize"
+        }
+      }
     },
     "trimmed_keyword": {
-      "type": "STRING",
-      "value": "trimmed"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "trimmed"
+        }
+      }
     },
     "do_keyword": {
-      "type": "STRING",
-      "value": "do"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "do"
+        }
+      }
     },
     "autoescape_keyword": {
-      "type": "STRING",
-      "value": "autoescape"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "autoescape"
+        }
+      }
     },
     "endautoescape_keyword": {
-      "type": "STRING",
-      "value": "endautoescape"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "endautoescape"
+        }
+      }
     },
     "raw_keyword": {
-      "type": "STRING",
-      "value": "raw"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "raw"
+        }
+      }
     },
     "endraw_keyword": {
-      "type": "STRING",
-      "value": "endraw"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "endraw"
+        }
+      }
     },
     "debug_keyword": {
-      "type": "STRING",
-      "value": "debug"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "debug"
+        }
+      }
     },
     "filter_keyword": {
-      "type": "STRING",
-      "value": "filter"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "filter"
+        }
+      }
     },
     "endfilter_keyword": {
-      "type": "STRING",
-      "value": "endfilter"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "endfilter"
+        }
+      }
     },
     "ternary_expression": {
       "type": "PREC_RIGHT",

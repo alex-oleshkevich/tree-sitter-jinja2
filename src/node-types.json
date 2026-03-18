@@ -699,11 +699,6 @@
     }
   },
   {
-    "type": "boolean",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "call_block",
     "named": true,
     "fields": {},
@@ -2069,11 +2064,6 @@
     }
   },
   {
-    "type": "in_keyword",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "include_statement",
     "named": true,
     "fields": {
@@ -2380,16 +2370,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "none",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "not_keyword",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "pair",
@@ -3506,18 +3486,6 @@
     "named": false
   },
   {
-    "type": "False",
-    "named": false
-  },
-  {
-    "type": "None",
-    "named": false
-  },
-  {
-    "type": "True",
-    "named": false
-  },
-  {
     "type": "[",
     "named": false
   },
@@ -3539,6 +3507,10 @@
   },
   {
     "type": "block_keyword",
+    "named": true
+  },
+  {
+    "type": "boolean",
     "named": true
   },
   {
@@ -3626,10 +3598,6 @@
     "named": true
   },
   {
-    "type": "false",
-    "named": false
-  },
-  {
     "type": "filter_keyword",
     "named": true
   },
@@ -3662,6 +3630,10 @@
     "named": false
   },
   {
+    "type": "in_keyword",
+    "named": true
+  },
+  {
     "type": "include_keyword",
     "named": true
   },
@@ -3679,7 +3651,7 @@
   },
   {
     "type": "none",
-    "named": false
+    "named": true
   },
   {
     "type": "not",
@@ -3688,6 +3660,10 @@
   {
     "type": "not in",
     "named": false
+  },
+  {
+    "type": "not_keyword",
+    "named": true
   },
   {
     "type": "number",
@@ -3748,10 +3724,6 @@
   {
     "type": "trimmed_keyword",
     "named": true
-  },
-  {
-    "type": "true",
-    "named": false
   },
   {
     "type": "with_keyword",
