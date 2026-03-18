@@ -4280,6 +4280,11 @@
     }
   ],
   "inline": [],
-  "supertypes": [],
+  "supertypes": [
+    "_expression",
+    "_primary_expression",
+    "_literal",
+    "_node"
+  ],
   "reserved": {}
 }

@@ -14,6 +14,12 @@ module.exports = grammar({
   name: "jinja2",
   word: $ => $.identifier,
   extras: $ => [/\s/],
+  supertypes: $ => [
+    $._expression,
+    $._primary_expression,
+    $._literal,
+    $._node,
+  ],
   externals: $ => [$.raw_content],
   conflicts: $ => [
     [$._primary_expression, $.unpacking],
