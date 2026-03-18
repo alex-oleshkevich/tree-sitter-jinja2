@@ -117,6 +117,8 @@
 (set_block_open target: (identifier) @variable)
 (assignment name: (identifier) @variable)
 (assignment name: (unpacking (identifier) @variable))
+(assignment name: (attribute_access object: (identifier) @variable))
+(assignment name: (attribute_access attribute: (identifier) @property))
 (import_name name: (identifier) @variable)
 (import_name alias: (identifier) @variable)
 (import_statement alias: (identifier) @variable)

@@ -66,6 +66,13 @@
   target: (identifier) @local.definition.variable
   (#set! definition.variable.scope "parent"))
 
+; Namespace attribute mutation — track the object as a reference
+; so find-usages of the namespace variable includes mutation sites
+(set_statement
+  (assignment
+    name: (attribute_access
+      object: (identifier) @local.reference)))
+
 ; Trans block scope and variables
 (trans_statement) @local.scope
 
