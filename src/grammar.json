@@ -1,6 +1,7 @@
 {
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "jinja2",
+  "word": "identifier",
   "rules": {
     "source_file": {
       "type": "REPEAT",
@@ -102,10 +103,6 @@
         }
       ]
     },
-    "_whitespace": {
-      "type": "PATTERN",
-      "value": "\\s+"
-    },
     "statement_begin": {
       "type": "TOKEN",
       "content": {
@@ -203,15 +200,8 @@
       }
     },
     "identifier": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": -1,
-        "content": {
-          "type": "PATTERN",
-          "value": "[a-zA-Z_][a-zA-Z0-9_]*"
-        }
-      }
+      "type": "PATTERN",
+      "value": "[a-zA-Z_][a-zA-Z0-9_]*"
     },
     "string": {
       "type": "CHOICE",
@@ -301,44 +291,38 @@
       }
     },
     "boolean": {
-      "type": "TOKEN",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "true"
-          },
-          {
-            "type": "STRING",
-            "value": "false"
-          },
-          {
-            "type": "STRING",
-            "value": "True"
-          },
-          {
-            "type": "STRING",
-            "value": "False"
-          }
-        ]
-      }
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "true"
+        },
+        {
+          "type": "STRING",
+          "value": "false"
+        },
+        {
+          "type": "STRING",
+          "value": "True"
+        },
+        {
+          "type": "STRING",
+          "value": "False"
+        }
+      ]
     },
     "none": {
-      "type": "TOKEN",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "none"
-          },
-          {
-            "type": "STRING",
-            "value": "None"
-          }
-        ]
-      }
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "none"
+        },
+        {
+          "type": "STRING",
+          "value": "None"
+        }
+      ]
     },
     "keyword_argument": {
       "type": "SEQ",
@@ -1647,26 +1631,12 @@
       ]
     },
     "is_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "is"
-        }
-      }
+      "type": "STRING",
+      "value": "is"
     },
     "not_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "not"
-        }
-      }
+      "type": "STRING",
+      "value": "not"
     },
     "test_call": {
       "type": "SEQ",
@@ -1773,455 +1743,168 @@
       }
     },
     "if_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "if"
-        }
-      }
+      "type": "STRING",
+      "value": "if"
     },
     "elif_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "elif"
-        }
-      }
+      "type": "STRING",
+      "value": "elif"
     },
     "else_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "else"
-        }
-      }
+      "type": "STRING",
+      "value": "else"
     },
     "endif_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "endif"
-        }
-      }
+      "type": "STRING",
+      "value": "endif"
     },
     "for_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "for"
-        }
-      }
+      "type": "STRING",
+      "value": "for"
     },
     "in_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "in"
-        }
-      }
+      "type": "STRING",
+      "value": "in"
     },
     "endfor_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "endfor"
-        }
-      }
+      "type": "STRING",
+      "value": "endfor"
     },
     "recursive_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "recursive"
-        }
-      }
+      "type": "STRING",
+      "value": "recursive"
     },
     "extends_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "extends"
-        }
-      }
+      "type": "STRING",
+      "value": "extends"
     },
     "block_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "block"
-        }
-      }
+      "type": "STRING",
+      "value": "block"
     },
     "endblock_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "endblock"
-        }
-      }
+      "type": "STRING",
+      "value": "endblock"
     },
     "scoped_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "scoped"
-        }
-      }
+      "type": "STRING",
+      "value": "scoped"
     },
     "required_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "required"
-        }
-      }
+      "type": "STRING",
+      "value": "required"
     },
     "include_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "include"
-        }
-      }
+      "type": "STRING",
+      "value": "include"
     },
     "ignore_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "ignore"
-        }
-      }
+      "type": "STRING",
+      "value": "ignore"
     },
     "missing_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "missing"
-        }
-      }
+      "type": "STRING",
+      "value": "missing"
     },
     "with_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "with"
-        }
-      }
+      "type": "STRING",
+      "value": "with"
     },
     "without_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "without"
-        }
-      }
+      "type": "STRING",
+      "value": "without"
     },
     "context_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "context"
-        }
-      }
+      "type": "STRING",
+      "value": "context"
     },
     "macro_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "macro"
-        }
-      }
+      "type": "STRING",
+      "value": "macro"
     },
     "endmacro_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "endmacro"
-        }
-      }
+      "type": "STRING",
+      "value": "endmacro"
     },
     "import_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "import"
-        }
-      }
+      "type": "STRING",
+      "value": "import"
     },
     "from_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "from"
-        }
-      }
+      "type": "STRING",
+      "value": "from"
     },
     "as_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "as"
-        }
-      }
+      "type": "STRING",
+      "value": "as"
     },
     "set_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "set"
-        }
-      }
+      "type": "STRING",
+      "value": "set"
     },
     "endset_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "endset"
-        }
-      }
+      "type": "STRING",
+      "value": "endset"
     },
     "call_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "call"
-        }
-      }
+      "type": "STRING",
+      "value": "call"
     },
     "endcall_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "endcall"
-        }
-      }
+      "type": "STRING",
+      "value": "endcall"
     },
     "endwith_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "endwith"
-        }
-      }
+      "type": "STRING",
+      "value": "endwith"
     },
     "trans_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "trans"
-        }
-      }
+      "type": "STRING",
+      "value": "trans"
     },
     "endtrans_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "endtrans"
-        }
-      }
+      "type": "STRING",
+      "value": "endtrans"
     },
     "pluralize_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "pluralize"
-        }
-      }
+      "type": "STRING",
+      "value": "pluralize"
     },
     "trimmed_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "trimmed"
-        }
-      }
+      "type": "STRING",
+      "value": "trimmed"
     },
     "do_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "do"
-        }
-      }
+      "type": "STRING",
+      "value": "do"
     },
     "autoescape_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "autoescape"
-        }
-      }
+      "type": "STRING",
+      "value": "autoescape"
     },
     "endautoescape_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "endautoescape"
-        }
-      }
+      "type": "STRING",
+      "value": "endautoescape"
     },
     "raw_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "raw"
-        }
-      }
+      "type": "STRING",
+      "value": "raw"
     },
     "endraw_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "endraw"
-        }
-      }
+      "type": "STRING",
+      "value": "endraw"
     },
     "debug_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "debug"
-        }
-      }
+      "type": "STRING",
+      "value": "debug"
     },
     "filter_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "filter"
-        }
-      }
+      "type": "STRING",
+      "value": "filter"
     },
     "endfilter_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "STRING",
-          "value": "endfilter"
-        }
-      }
+      "type": "STRING",
+      "value": "endfilter"
     },
     "ternary_expression": {
       "type": "PREC_RIGHT",
@@ -4490,8 +4173,15 @@
             "content": {
               "type": "ALIAS",
               "content": {
-                "type": "PATTERN",
-                "value": "end[a-zA-Z_][a-zA-Z0-9_]*"
+                "type": "TOKEN",
+                "content": {
+                  "type": "PREC",
+                  "value": 1,
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "end[a-zA-Z_][a-zA-Z0-9_]*"
+                  }
+                }
               },
               "named": true,
               "value": "identifier"
