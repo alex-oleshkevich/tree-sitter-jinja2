@@ -28,7 +28,6 @@ module.exports = grammar({
     [$.subscript, $._expression],
     [$.trans_open, $._literal],
     [$.filter_name],
-    [$._unfiltered_expression, $._expression],
   ],
   rules: {
     source_file: $ => repeat($._node),
@@ -148,15 +147,8 @@ module.exports = grammar({
       field('name', $.identifier),
       optional($._argument_list),
     ),
-    _unfiltered_expression: $ => choice(
-      $._primary_expression,
-      $.binary_expression,
-      $.unary_expression,
-      $.test_expression,
-      $.ternary_expression,
-    ),
-    filter: $ => prec.left(seq(
-      field('value', $._unfiltered_expression),
+    filter: $ => prec.left(10, seq(
+      field('value', $._primary_expression),
       repeat1(seq(
         token(prec(11, seq(optional(/\s+/), '|'))),
         field('filter', $.filter_name),

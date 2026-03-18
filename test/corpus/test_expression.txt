@@ -208,3 +208,35 @@ Test on expression
       (is_keyword)
       test: (identifier))
     (print_end)))
+
+================================================================================
+Negated test is not none
+================================================================================
+{{ x is not none }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (test_expression
+      value: (identifier)
+      (is_keyword)
+      (not_keyword)
+      test: (none))
+    (print_end)))
+
+================================================================================
+Negated test is not defined
+================================================================================
+{{ x is not defined }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (test_expression
+      value: (identifier)
+      (is_keyword)
+      (not_keyword)
+      test: (identifier))
+    (print_end)))

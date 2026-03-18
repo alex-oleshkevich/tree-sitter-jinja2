@@ -141,12 +141,12 @@ Filter on binary expression - filter binds tighter than addition
 (source_file
   (print
     (print_begin)
-    (filter
-      value: (binary_expression
-        left: (identifier)
-        right: (identifier))
-      filter: (filter_name
-        name: (identifier)))
+    (binary_expression
+      left: (identifier)
+      right: (filter
+        value: (identifier)
+        filter: (filter_name
+          name: (identifier))))
     (print_end)))
 
 ================================================================================
@@ -158,13 +158,29 @@ Chained filter on binary expression
 (source_file
   (print
     (print_begin)
-    (filter
-      value: (binary_expression
-        left: (identifier)
-        right: (filter
-          value: (identifier)
-          filter: (filter_name
-            name: (identifier))))
-      filter: (filter_name
-        name: (identifier)))
+    (binary_expression
+      left: (identifier)
+      right: (filter
+        value: (identifier)
+        filter: (filter_name
+          name: (identifier))
+        filter: (filter_name
+          name: (identifier))))
+    (print_end)))
+
+================================================================================
+Filter on binary expression
+================================================================================
+{{ a + b | string }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (binary_expression
+      left: (identifier)
+      right: (filter
+        value: (identifier)
+        filter: (filter_name
+          name: (identifier))))
     (print_end)))

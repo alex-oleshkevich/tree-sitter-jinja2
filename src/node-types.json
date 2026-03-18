@@ -1278,22 +1278,6 @@
           {
             "type": "_primary_expression",
             "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "ternary_expression",
-            "named": true
-          },
-          {
-            "type": "test_expression",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
-            "named": true
           }
         ]
       }
