@@ -184,3 +184,35 @@ Filter on binary expression
         filter: (filter_name
           name: (identifier))))
     (print_end)))
+
+================================================================================
+Unary expression filtered
+================================================================================
+{{ -5 | abs }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (filter
+      (unary_expression
+        (number))
+      (filter_name
+        (identifier)))
+    (print_end)))
+
+================================================================================
+Not expression filtered
+================================================================================
+{{ not x | list }}
+--------------------------------------------------------------------------------
+
+(source_file
+  (print
+    (print_begin)
+    (unary_expression
+      (filter
+        (identifier)
+        (filter_name
+          (identifier))))
+    (print_end)))

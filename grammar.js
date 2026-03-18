@@ -148,7 +148,7 @@ module.exports = grammar({
       optional($._argument_list),
     ),
     filter: $ => prec.left(10, seq(
-      field('value', $._primary_expression),
+      field('value', choice($._primary_expression, $.unary_expression)),
       repeat1(seq(
         token(prec(11, seq(optional(/\s+/), '|'))),
         field('filter', $.filter_name),
