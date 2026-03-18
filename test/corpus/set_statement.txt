@@ -97,8 +97,7 @@ Set block with filter
       (statement_begin)
       (set_keyword)
       target: (identifier)
-      filter: (filter
-        name: (identifier))
+      filter: (identifier)
       (statement_end))
     (text)
     (set_block_close
@@ -155,7 +154,7 @@ Set block with filter function
       (statement_begin)
       (set_keyword)
       target: (identifier)
-      filter: (filter
+      filter: (function_call
         name: (identifier)
         positional_argument: (string))
       (statement_end))

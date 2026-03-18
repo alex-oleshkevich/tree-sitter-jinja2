@@ -1,18 +1,36 @@
 # tree-sitter-jinja2
 
-A [tree-sitter](https://tree-sitter.github.io/tree-sitter/) grammar for the [Jinja2](https://jinja.palletsprojects.com/) templating language, designed for LSP integration and syntax highlighting.
+A [tree-sitter](https://tree-sitter.github.io/tree-sitter/) grammar for the [Jinja2](https://jinja.palletsprojects.com/) templating language.
 
-## Features
+## What it parses
 
-### LSP / Editor Integration
+The grammar handles both expression blocks (`{{ }}`) and statement blocks (`{% %}`), producing a full AST suitable for editor tooling.
 
-- **Syntax highlighting** (`queries/highlights.scm`) — keywords, operators, strings, builtins, variables, properties, comments
-- **Scope tracking** (`queries/locals.scm`) — variable definitions and references for goto-definition
-- **Code folding** (`queries/folds.scm`) — `if`, `for`, `block`, `macro`, and other block structures
-- **Indentation hints** (`queries/indents.scm`) — automatic indent/dedent around block openers/closers
-- **Symbol outline** (`queries/outline.scm`) — blocks, macros, and `set` variables
-- **Bracket matching** (`queries/brackets.scm`)
-- **Text objects** (`queries/textobjects.scm`)
+Supported language features:
+
+- Literals: strings, numbers, booleans, `none`, lists, dicts, tuples
+- Expressions: attribute access, subscript, function/method calls, filters, tests, ternary
+- Operators: arithmetic, comparison, logical, membership (`in`, `not in`), string concatenation (`~`)
+- Statements: `if`/`elif`/`else`, `for`/`else`, `set`, `set` blocks, `block`, `macro`, `call`, `with`, `include`, `import`, `from`, `trans`/`pluralize`, `do`, `filter`, `autoescape`, `raw`, `debug`, `extends`
+- Whitespace trimming: `{%- -%}`, `{{- -}}`, `{#- -#}`
+- Custom extension tags (paired open/close)
+- Comments
+
+## Editor integration
+
+The `queries/` directory contains:
+
+| File | Purpose |
+|------|---------|
+| `highlights.scm` | Syntax highlighting |
+| `locals.scm` | Variable definitions and references (goto-definition, rename) |
+| `textobjects.scm` | Text object motions (select function, parameter, block, etc.) |
+| `indents.scm` | Auto-indentation |
+| `folds.scm` | Code folding |
+| `outline.scm` | Symbol list (blocks, macros, set variables) |
+| `brackets.scm` | Bracket matching |
+
+These follow [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) conventions.
 
 ## Installation
 
@@ -34,7 +52,6 @@ const tree = parser.parse('{{ user.name | upper }}');
 ### Rust
 
 ```toml
-# Cargo.toml
 [dependencies]
 tree-sitter-jinja2 = "0.1"
 ```
@@ -45,51 +62,41 @@ tree-sitter-jinja2 = "0.1"
 pip install tree-sitter-jinja2
 ```
 
-### Other
+Bindings for C, Go, and Swift are in the `bindings/` directory.
 
-Bindings are also available for **C**, **Go**, and **Swift**. See the `bindings/` directory.
-
-## Supported File Types
-
-The grammar is registered for these extensions by default:
+## Supported file types
 
 `.jinja2`, `.jinja`, `.j2`, `.html.j2`, `.js.j2`, `.css.j2`, `.yaml.j2`, `.yml.j2`
 
 ## Development
 
 ```sh
-# Install dependencies
 npm install
 
-# Generate parser from grammar.js
+# Regenerate parser after editing grammar.js
 npx tree-sitter generate
 
-# Run all tests
+# Run tests
 npx tree-sitter test
 
-# Update test expectations
+# Update test snapshots
 npx tree-sitter test -u
 
 # Parse a file
-npx tree-sitter parse sample.html.j2
-
-# Launch playground (WASM)
-npm start
+npx tree-sitter parse example.html.j2
 ```
 
-Tests live in `test/corpus/` in tree-sitter's corpus format.
+Tests are in `test/corpus/` using tree-sitter's corpus format.
 
-## Tradeoffs
+## Notes
 
-**Filter/binary operator ambiguity** — The `|` character is both a filter operator and (in some template contexts) a potential bitwise operator. The grammar resolves this by using a high-precedence lexer token `token(prec(11, seq(optional(/\s+/), '|')))` that greedily captures optional whitespace followed by `|`. This means `|` is always treated as a filter, not a bitwise OR — consistent with Jinja2 semantics but unlike Python.
+**`|` is always a filter operator.** Jinja2 has no bitwise OR, so `|` unambiguously means filter. The lexer uses a high-precedence token to greedily consume optional whitespace before `|`, which prevents conflicts with binary expressions.
 
-**Expression-only parsing for `{{ }}`** — The grammar fully parses the AST for output expressions. Statement blocks (`{% %}`) are also fully parsed. This makes the grammar suitable for LSP but means the parser is more complex than a simple regex-based tokenizer.
+**No host language injection.** The grammar parses Jinja2 syntax only. Editors that support language injection (Neovim, Helix, Zed) can layer HTML, CSS, or JavaScript parsing on top.
 
-**Conflict resolution via GLR** — Several grammar constructs are genuinely ambiguous (e.g., `(a, b)` as a tuple vs. parenthesized expression, `a[b]` as subscript vs. primary). Tree-sitter's GLR parser explores both paths; conflicts are declared explicitly and resolved by precedence rules. This is correct but has a minor performance cost compared to a purely LALR grammar.
+**`raw` blocks use an external scanner.** The `{% raw %}...{% endraw %}` construct must suppress all Jinja2 parsing inside, including `{%` sequences. This requires a hand-written C scanner (`src/scanner.c`) rather than a regex rule.
 
-**No host language injection** — The grammar parses Jinja2 syntax but does not inject the surrounding host language (HTML, CSS, JS, etc.). Editor plugins that support injections can layer this on top.
-
-**Keywords are identifiers at the lexer level** — Jinja2 keywords (`if`, `for`, `in`, etc.) are valid variable names in some positions. The grammar uses tree-sitter's `word` rule and per-keyword named nodes to handle this without breaking identifier parsing.
+**GLR for genuine ambiguities.** A few constructs are structurally ambiguous — for example, `(a, b)` as a tuple vs. a parenthesized expression. Tree-sitter's GLR parser explores both paths; the conflicts are declared explicitly in `grammar.js`.
 
 ## License
 

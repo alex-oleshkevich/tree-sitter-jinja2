@@ -439,15 +439,11 @@ module.exports = grammar({
       $.assignment,
       $.statement_end,
     ),
-    _filter_name: $ => seq(
-      field('name', $.identifier),
-      optional($._argument_list),
-    ),
     set_block_open: $ => seq(
       $.statement_begin,
       $.set_keyword,
       field('target', $.identifier),
-      optional(seq('|', field('filter', alias($._filter_name, $.filter)))),
+      optional(seq('|', field('filter', $._expression))),
       $.statement_end,
     ),
     set_block_close: $ => seq(
@@ -612,7 +608,7 @@ module.exports = grammar({
     filter_open: $ => seq(
       $.statement_begin,
       $.filter_keyword,
-      field('name', choice($.function_call, $.identifier)),
+      field('filter', $._expression),
       $.statement_end,
     ),
     filter_close: $ => seq(

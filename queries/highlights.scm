@@ -96,8 +96,9 @@
 
 ; Filter names
 (filter name: (identifier) @function.call)
-(filter_open name: (identifier) @function.call)
-(filter_open name: (function_call name: (identifier) @function.call))
+(filter_open filter: (identifier) @function.call)
+(filter_open filter: (function_call name: (identifier) @function.call))
+(filter_open filter: (filter name: (identifier) @function.call))
 (set_block_open filter: (filter name: (identifier) @function.call))
 
 ; Template references
