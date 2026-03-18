@@ -2,8 +2,9 @@
 (block_open
   name: (identifier) @local.definition.namespace)
 
+; endblock name is optional/decorative — reference, not a second definition
 (block_close
-  name: (identifier) @local.definition.namespace)
+  name: (identifier) @local.reference)
 
 ; Macro creates a new scope with parameters
 (macro_statement) @local.scope
@@ -12,9 +13,9 @@
   name: (identifier) @local.definition.function
   (#set! definition.function.scope "parent"))
 
+; endmacro name is optional/decorative — reference, not a second definition
 (macro_close
-  name: (identifier) @local.definition.function
-  (#set! definition.function.scope "parent"))
+  name: (identifier) @local.reference)
 
 (parameter
   name: (identifier) @local.definition.parameter)
