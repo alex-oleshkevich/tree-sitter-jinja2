@@ -48,8 +48,8 @@ module.exports = grammar({
       /0[bB][01]+/,
       /\d+(\.\d+)?([eE][+-]?\d+)?/,
     )),
-    boolean: $ => token(prec(1, choice('true', 'false', 'True', 'False'))),
-    none: $ => token(prec(1, choice('none', 'None'))),
+    boolean: $ => choice('true', 'false', 'True', 'False'),
+    none: $ => choice('none', 'None'),
     keyword_argument: $ => seq(
       field('name', $.identifier),
       '=',

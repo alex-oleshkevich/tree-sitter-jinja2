@@ -240,3 +240,24 @@ Negated test is not defined
       (not_keyword)
       test: (identifier))
     (print_end)))
+
+================================================================================
+Test with none-prefixed name
+================================================================================
+{% if x is nonexistent %}{% endif %}
+--------------------------------------------------------------------------------
+
+(source_file
+  (if_statement
+    (if_open
+      (statement_begin)
+      (if_keyword)
+      condition: (test_expression
+        value: (identifier)
+        (is_keyword)
+        test: (identifier))
+      (statement_end))
+    (if_close
+      (statement_begin)
+      (endif_keyword)
+      (statement_end))))
